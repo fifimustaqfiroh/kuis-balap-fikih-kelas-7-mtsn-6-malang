@@ -403,14 +403,21 @@
 
     /* KOKPIT SETIR MOBIL & POD PEDAL HYPER SPORT CANGGIH */
     .cockpit-bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      width: 100%;
       padding: 8px 16px max(12px, env(safe-area-inset-bottom)) 16px;
       box-sizing: border-box;
       gap: 12px;
-      z-index: 50;
+      z-index: 60;
+      pointer-events: none;
+    }
+    .steering-container, .action-pedals-pod {
+      pointer-events: auto;
     }
     .steering-container {
       display: flex;
@@ -629,70 +636,109 @@
     /* RESPONSIVE LAYOUT KHUSUS HP (SMARTPHONE) */
     @media (max-width: 650px) {
       .cockpit-bottom {
-        padding: 4px 8px max(10px, env(safe-area-inset-bottom)) 8px;
-        gap: 6px;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        padding: 4px 6px max(8px, env(safe-area-inset-bottom)) 6px !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+        z-index: 80 !important;
+        pointer-events: none !important;
       }
       .steering-container {
-        padding: 4px 6px;
-        border-radius: 18px;
+        padding: 4px 4px !important;
+        border-radius: 16px !important;
+        flex-shrink: 0 !important;
+        pointer-events: auto !important;
       }
       #steeringWheel {
-        width: 118px;
-        height: 118px;
+        width: 95px !important;
+        height: 95px !important;
       }
       .ctrl-btn.steer-btn {
-        width: 38px !important;
-        height: 38px !important;
-        font-size: 14px !important;
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 13px !important;
       }
       .action-pedals-pod {
-        padding: 6px 8px;
-        gap: 8px;
-        border-radius: 20px;
+        padding: 4px 6px !important;
+        gap: 6px !important;
+        border-radius: 18px !important;
+        flex-shrink: 0 !important;
+        pointer-events: auto !important;
       }
       .racing-pedal {
-        width: 66px;
-        height: 104px;
-        padding: 6px 4px 5px 4px;
+        width: 58px !important;
+        height: 96px !important;
+        padding: 4px 3px 4px 3px !important;
+        border-radius: 14px !important;
       }
       .pedal-icon {
-        font-size: 20px;
+        font-size: 18px !important;
       }
       .pedal-main-text {
-        font-size: 18px;
-        letter-spacing: 1px;
+        font-size: 17px !important;
+        letter-spacing: 0.5px !important;
+      }
+      .pedal-sub-text {
+        font-size: 7px !important;
       }
       .pedal-status-tag {
-        font-size: 8px;
-        padding: 1px 4px;
+        font-size: 7.5px !important;
+        padding: 1px 3px !important;
       }
       .hud-top {
         margin-left: 0 !important;
-        gap: 6px;
+        gap: 4px !important;
       }
       .telemetry-card {
-        padding: 6px 8px;
-        gap: 8px;
+        padding: 4px 8px !important;
+        gap: 6px !important;
+      }
+      .stat-label {
+        font-size: 8px !important;
       }
       .stat-value {
-        font-size: 14px;
+        font-size: 13px !important;
       }
       .radar-container {
-        transform: scale(0.8);
-        transform-origin: top right;
+        transform: scale(0.72) !important;
+        transform-origin: top right !important;
       }
       .mini-leaderboard {
-        width: 155px;
-        max-height: 130px;
-        font-size: 10px;
-        top: 68px;
-        right: 8px;
+        width: 140px !important;
+        max-height: 110px !important;
+        font-size: 9px !important;
+        top: 60px !important;
+        right: 6px !important;
       }
       .event-ticker {
-        font-size: 10px;
-        padding: 4px 10px;
-        top: 60px;
-        max-width: 90%;
+        font-size: 9.5px !important;
+        padding: 3px 8px !important;
+        top: 52px !important;
+        max-width: 85% !important;
+      }
+    }
+
+    /* KHUSUS HP DENGAN LAYAR SANGAT KECIL (< 360px) */
+    @media (max-width: 360px) {
+      #steeringWheel {
+        width: 82px !important;
+        height: 82px !important;
+      }
+      .ctrl-btn.steer-btn {
+        width: 26px !important;
+        height: 26px !important;
+        font-size: 11px !important;
+      }
+      .racing-pedal {
+        width: 52px !important;
+        height: 88px !important;
+      }
+      .pedal-main-text {
+        font-size: 15px !important;
       }
     }
 
@@ -1735,50 +1781,120 @@
         }, 180);
       },
 
-      // SUARA BENAR: MELODI KEMENANGAN CERIA TINGGI & JELAS + SPARKLE
+      // SUARA JAWABAN BENAR: MELODI JUARA SPEKTAKULER (ARPEGGIO EMAS + FANFARE BRASS + NITRO WHOOSH)
       playCorrectSound() {
         if (this.isMuted) return;
         this.init();
-        const chords = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
-        chords.forEach((freq, i) => {
-          const now = this.ctx.currentTime + (i * 0.07);
+        const now = this.ctx.currentTime;
+
+        // 1. Lonceng Emas Arpeggio Naik Ceria (C5 -> E5 -> G5 -> B5 -> C6 -> E6 -> G6)
+        const chimeNotes = [523.25, 659.25, 783.99, 987.77, 1046.50, 1318.51, 1567.98];
+        chimeNotes.forEach((freq, idx) => {
+          const t = now + (idx * 0.05);
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, now);
-          gain.gain.setValueAtTime(0.35, now);
-          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, t);
+
+          gain.gain.setValueAtTime(0.35, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.45);
+
           osc.connect(gain);
           gain.connect(this.ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.4);
+
+          osc.start(t);
+          osc.stop(t + 0.48);
         });
-        // Ditambah Turbo Nitro Whoosh
+
+        // 2. Akord Kuningan Juara (Brass Fanfare)
+        [523.25, 659.25, 783.99, 1046.50].forEach(f => {
+          const t = now + 0.36;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const filter = this.ctx.createBiquadFilter();
+
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(f, t);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(2400, t);
+
+          gain.gain.setValueAtTime(0.25, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.55);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(t);
+          osc.stop(t + 0.58);
+        });
+
+        // 3. Suara Nitro Whoosh
         this.nitro();
       },
 
-      // SUARA SALAH: KARTUN TROMBONE JATUH "WAH-WAH-WAH-WAAAAHH" + DECIT REM
+      // SUARA JAWABAN SALAH: BUZZER GAGAL RETRO + TROMBONE KARTUN JATUH "WAH-WAH-WAH-WAAAAHH" + DECIT REM
       playWrongSound() {
         if (this.isMuted) return;
         this.init();
-        const wahFrequencies = [293.66, 277.18, 261.63, 233.08]; // D4, C#4, C4, Bb3 (Menurun Sedih & Lucu)
-        wahFrequencies.forEach((freq, idx) => {
-          const now = this.ctx.currentTime + (idx * 0.16);
+        const now = this.ctx.currentTime;
+
+        // 1. Double Error Buzzer Rendah (Bukan nada musik, murni efek arcade salah)
+        [0, 0.12].forEach(dt => {
+          const t = now + dt;
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(freq, now);
-          // Vibrato effect
-          osc.frequency.linearRampToValueAtTime(freq - 15, now + 0.15);
-          gain.gain.setValueAtTime(0.28, now);
-          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(120, t);
+          gain.gain.setValueAtTime(0.28, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.09);
           osc.connect(gain);
           gain.connect(this.ctx.destination);
-          osc.start(now);
-          osc.stop(now + 0.2);
+          osc.start(t);
+          osc.stop(t + 0.1);
         });
-        // Decit ban selip
-        this.slip();
+
+        // 2. Trombone Kartun Lucu Menurun (Wah-Wah-Wah-Waaaaah)
+        const notes = [
+          { f: 293.66, dur: 0.18, start: 0.22 }, // D4
+          { f: 277.18, dur: 0.18, start: 0.40 }, // C#4
+          { f: 261.63, dur: 0.18, start: 0.58 }, // C4
+          { f: 220.00, dur: 0.48, start: 0.76 }  // A3 (Turun panjang meratap)
+        ];
+
+        notes.forEach((n, idx) => {
+          const t = now + n.start;
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const filter = this.ctx.createBiquadFilter();
+
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(n.f, t);
+
+          if (idx === notes.length - 1) {
+            osc.frequency.linearRampToValueAtTime(n.f - 28, t + n.dur);
+          } else {
+            osc.frequency.linearRampToValueAtTime(n.f - 14, t + n.dur);
+          }
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(1200, t);
+
+          gain.gain.setValueAtTime(0.3, t);
+          gain.gain.exponentialRampToValueAtTime(0.01, t + n.dur);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(t);
+          osc.stop(t + n.dur + 0.05);
+        });
+
+        // 3. Decitan ban selip
+        setTimeout(() => { this.slip(); }, 550);
       },
 
       nitro() {
@@ -3001,6 +3117,10 @@
       const isAccelerating = keys.up;
       const isBraking = keys.down;
       const isHardSteering = Math.abs(steerDir) > 0.55 && Math.abs(playerCar.speed) > 2.5;
+
+      if (!Sound.isEngineRunning && !isCountdownActive && (Math.abs(playerCar.speed) > 0.05 || isAccelerating)) {
+        Sound.startEngineSound();
+      }
 
       Sound.updateEnginePitch(speedRatio, isAccelerating, isBraking, isHardSteering);
 
