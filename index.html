@@ -421,6 +421,9 @@
       filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
       transition: transform 0.08s ease-out;
       cursor: grab;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
     }
     #steeringWheel:active {
       cursor: grabbing;
@@ -753,13 +756,8 @@
             <input type="text" id="inputName" value="Ahmad Fauzi" placeholder="Masukkan namamu..." oninput="updateAvatarPreview()">
           </div>
           <div class="input-group">
-            <label>Jenjang Kelas (Pilih Salah Satu)</label>
-            <div class="option-pills" id="groupStudentClass">
-              <button type="button" class="pill-btn active" onclick="setStudentClass('Kelas VII MTsN 6 Malang', this)">🏫 Kelas 7</button>
-              <button type="button" class="pill-btn" onclick="setStudentClass('Kelas VIII MTsN 6 Malang', this)">🏫 Kelas 8</button>
-              <button type="button" class="pill-btn" onclick="setStudentClass('Kelas IX MTsN 6 Malang', this)">🏫 Kelas 9</button>
-            </div>
-            <input type="hidden" id="inputClass" value="Kelas VII MTsN 6 Malang">
+            <label>Jenjang & Kelas Siswa (Ketik Sendiri)</label>
+            <input type="text" id="inputClass" value="Kelas 7-A" placeholder="Ketik kelasmu (misal: 7-A, 8-B, 9-C, VII-F)..." oninput="updateAvatarPreview()">
           </div>
         </div>
 
@@ -864,8 +862,15 @@
     <!-- KOKPIT SETIR MOBIL & PEDAL MENYETIR -->
     <div class="cockpit-bottom hud-interactive" id="cockpitArea">
       <div class="steering-container">
-        <canvas id="steeringWheel" width="155" height="155"></canvas>
-        <span style="font-size:10px; color:#94a3b8; font-weight:bold; margin-top:2px;">KEMUDI BALAP (◀ / ▶)</span>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button type="button" class="ctrl-btn steer-btn" id="btnSteerLeft" style="width:48px; height:48px; font-size:18px; border-radius:50%; background:rgba(15,23,42,0.85); border:2px solid rgba(255,255,255,0.3); color:#fff; cursor:pointer;" title="Belok Kiri">◀</button>
+          <div style="position:relative; display:inline-block;">
+            <canvas id="steeringWheel" width="155" height="155"></canvas>
+            <div id="steerTouchFeedback" style="position:absolute; bottom:6px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:800; color:#ffd600; text-shadow:0 1px 3px #000; pointer-events:none; white-space:nowrap;">LURUS</div>
+          </div>
+          <button type="button" class="ctrl-btn steer-btn" id="btnSteerRight" style="width:48px; height:48px; font-size:18px; border-radius:50%; background:rgba(15,23,42,0.85); border:2px solid rgba(255,255,255,0.3); color:#fff; cursor:pointer;" title="Belok Kanan">▶</button>
+        </div>
+        <span style="font-size:10px; color:#a7f3d0; font-weight:bold; margin-top:3px; text-shadow:0 1px 2px #000;">PUTAR / DRAG SETIR UNTUK KEMUDI MOBIL</span>
       </div>
 
       <div class="action-pedals">
@@ -997,20 +1002,14 @@
               <button type="button" class="pill-btn" onclick="setAiGrade('IX', this)">🏫 Kelas 9</button>
             </div>
             <input type="hidden" id="aiGradeSelect" value="VII">
-            <span id="aiGradeHint" style="font-size:11px; color:#a7f3d0; margin-top:4px; display:block;">Materi: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa</span>
+            <span id="aiGradeHint" style="font-size:11px; color:#a7f3d0; margin-top:4px; display:block;">Materi Acuan: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa</span>
           </div>
 
-          <!-- 2. BENTUK SOAL: DIBUAT DESKRIPTIF SAJA SUPAYA DIJELASKAN GURU -->
+          <!-- 2. MATERI FIKIH (DIKOSONGI AGAR DIISI SENDIRI OLEH GURU) -->
           <div class="input-group">
-            <label>2. Bentuk Soal</label>
-            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(0,230,118,0.4); border-radius:10px; padding:9px 12px; display:flex; align-items:center; gap:10px;">
-              <span style="font-size:22px;">📜</span>
-              <div>
-                <strong style="color:var(--primary); font-size:12px;">Soal Cerita Deskriptif (Studi Kasus)</strong>
-                <p style="font-size:10px; color:#cbd5e1; margin-top:2px;">Soal disusun dalam bentuk cerita studi kasus, memuat panduan penjelasan syar'i untuk diterangkan guru.</p>
-              </div>
-            </div>
-            <input type="hidden" id="aiQuestionTypeSelect" value="DESKRIPTIF">
+            <label>2. Materi / Topik Bahasan (Diisi oleh Guru)</label>
+            <input type="text" id="aiTopicInput" value="" placeholder="Ketik materi di sini (contoh: Sholat Jamak Qashar, Zakat Fitrah, Riba)..." style="width:100%; font-size:13px; padding:10px 12px; background:rgba(255,255,255,0.07); border:1px solid rgba(0,230,118,0.5); border-radius:10px; color:#fff; outline:none;">
+            <span style="font-size:11px; color:#94a3b8; margin-top:4px; display:block;">Materi sengaja dikosongi agar guru bebas mengisi topik/materi spesifik yang diinginkan.</span>
           </div>
         </div>
 
@@ -1558,10 +1557,9 @@
       updateAvatarPreview();
     }
 
-    function setStudentClass(clsName, btnEl) {
-      document.getElementById('inputClass').value = clsName;
-      document.querySelectorAll('#groupStudentClass .pill-btn').forEach(b => b.classList.remove('active'));
-      if (btnEl) btnEl.classList.add('active');
+    function setStudentClass(clsName) {
+      const el = document.getElementById('inputClass');
+      if (el) el.value = clsName;
       updateAvatarPreview();
     }
 
@@ -1570,9 +1568,9 @@
       document.querySelectorAll('#groupAiGrade .pill-btn').forEach(b => b.classList.remove('active'));
       if (btnEl) btnEl.classList.add('active');
       const hints = {
-        VII: "Materi: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa",
-        VIII: "Materi: Sujud Sahwi/Syukur, Puasa Fardhu/Sunnah, Zakat, Iktikaf",
-        IX: "Materi: Qurban, Aqiqah, Jual Beli, Pinjam Meminjam, Muamalah"
+        VII: "Materi Acuan: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa",
+        VIII: "Materi Acuan: Sujud Sahwi/Syukur, Puasa Fardhu/Sunnah, Zakat, Iktikaf",
+        IX: "Materi Acuan: Qurban, Aqiqah, Jual Beli, Pinjam Meminjam, Muamalah"
       };
       const hintEl = document.getElementById('aiGradeHint');
       if (hintEl) hintEl.innerText = hints[grade] || "";
@@ -1580,7 +1578,7 @@
 
     function updateAvatarPreview() {
       const name = document.getElementById('inputName').value.trim() || 'Driver';
-      const cls = document.getElementById('inputClass').value;
+      const cls = (document.getElementById('inputClass') ? document.getElementById('inputClass').value.trim() : '') || 'Kelas 7';
       playerConfig.name = name;
       playerConfig.className = cls;
 
@@ -1859,13 +1857,118 @@
     function setupTouch(id, k) {
       const el = document.getElementById(id);
       if (!el) return;
-      el.addEventListener('touchstart', e => { e.preventDefault(); keys[k] = true; });
+      el.addEventListener('touchstart', e => { e.preventDefault(); keys[k] = true; }, { passive: false });
       el.addEventListener('touchend', e => { e.preventDefault(); keys[k] = false; });
+      el.addEventListener('touchcancel', () => { keys[k] = false; });
       el.addEventListener('mousedown', () => keys[k] = true);
       el.addEventListener('mouseup', () => keys[k] = false);
+      el.addEventListener('mouseleave', () => keys[k] = false);
     }
     setupTouch('btnGas', 'up');
     setupTouch('btnBrake', 'down');
+    setupTouch('btnSteerLeft', 'left');
+    setupTouch('btnSteerRight', 'right');
+
+    // SISTEM KONTROL SETIR MOBIL BALAP INTERAKTIF (DRAG, PUTAR, KLIK, SENTUH)
+    let isSteeringDragging = false;
+    let activeSteerValue = 0; // Rentang -1.0 (kiri penuh) sampai +1.0 (kanan penuh)
+    let steerVisualRotation = 0; // Sudut visual dalam radian
+
+    function handleSteerPointer(clientX, clientY) {
+      const canvas = document.getElementById('steeringWheel');
+      if (!canvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = clientX - cx;
+      const dy = clientY - cy;
+
+      // 1. Sudut rotasi relatif terhadap arah jam 12 (-Math.PI/2)
+      let angle = Math.atan2(dy, dx);
+      let rel = angle - (-Math.PI / 2);
+      while (rel > Math.PI) rel -= Math.PI * 2;
+      while (rel < -Math.PI) rel += Math.PI * 2;
+
+      // 2. Perpindahan horizontal ternormalisasi (-1 sampai +1)
+      const maxDist = rect.width * 0.42;
+      const horizRatio = Math.max(-1, Math.min(1, dx / maxDist));
+
+      // 3. Tentukan rasio kemudi:
+      // Jika menyentuh bagian atas setir (dy < 15px), rotasi sudut sangat mulus dan natural!
+      // Jika menyentuh bagian bawah atau pinggir samping, perpindahan horizontal sangat responsif
+      let steerRatio = 0;
+      if (dy < 15) {
+        steerRatio = Math.max(-1, Math.min(1, rel / 1.15));
+      } else {
+        steerRatio = horizRatio;
+      }
+
+      activeSteerValue = steerRatio;
+      steerVisualRotation = steerRatio * 1.25;
+
+      const feedback = document.getElementById('steerTouchFeedback');
+      if (feedback) {
+        if (steerRatio < -0.15) {
+          feedback.innerText = `◀ BELOK KIRI (${Math.round(Math.abs(steerRatio) * 100)}%)`;
+          feedback.style.color = '#00e676';
+        } else if (steerRatio > 0.15) {
+          feedback.innerText = `BELOK KANAN ▶ (${Math.round(Math.abs(steerRatio) * 100)}%)`;
+          feedback.style.color = '#00e676';
+        } else {
+          feedback.innerText = `LURUS`;
+          feedback.style.color = '#ffd600';
+        }
+      }
+    }
+
+    function initSteeringWheelControls() {
+      const wheelEl = document.getElementById('steeringWheel');
+      if (!wheelEl) return;
+
+      wheelEl.addEventListener('mousedown', e => {
+        isSteeringDragging = true;
+        handleSteerPointer(e.clientX, e.clientY);
+      });
+
+      window.addEventListener('mousemove', e => {
+        if (isSteeringDragging) {
+          handleSteerPointer(e.clientX, e.clientY);
+        }
+      });
+
+      const releaseSteering = () => {
+        if (isSteeringDragging) {
+          isSteeringDragging = false;
+          activeSteerValue = 0;
+          const feedback = document.getElementById('steerTouchFeedback');
+          if (feedback) {
+            feedback.innerText = `LURUS`;
+            feedback.style.color = '#ffd600';
+          }
+        }
+      };
+
+      window.addEventListener('mouseup', releaseSteering);
+
+      wheelEl.addEventListener('touchstart', e => {
+        isSteeringDragging = true;
+        if (e.touches && e.touches[0]) {
+          handleSteerPointer(e.touches[0].clientX, e.touches[0].clientY);
+        }
+        e.preventDefault();
+      }, { passive: false });
+
+      window.addEventListener('touchmove', e => {
+        if (isSteeringDragging && e.touches && e.touches[0]) {
+          handleSteerPointer(e.touches[0].clientX, e.touches[0].clientY);
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      window.addEventListener('touchend', releaseSteering);
+      window.addEventListener('touchcancel', releaseSteering);
+    }
+    initSteeringWheelControls();
 
     function drawInteractiveSteeringWheel() {
       const c = document.getElementById('steeringWheel');
@@ -1877,46 +1980,77 @@
       const cy = c.height / 2;
 
       let targetSteer = 0;
-      if (keys.left) targetSteer = -0.75;
-      if (keys.right) targetSteer = 0.75;
-      playerCar.steerVisualAngle += (targetSteer - playerCar.steerVisualAngle) * 0.2;
+      if (keys.left) targetSteer = -0.92;
+      else if (keys.right) targetSteer = 0.92;
+      else if (isSteeringDragging) targetSteer = steerVisualRotation;
+      else targetSteer = 0;
+
+      playerCar.steerVisualAngle += (targetSteer - playerCar.steerVisualAngle) * 0.28;
 
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(playerCar.steerVisualAngle);
 
-      ctx.lineWidth = 16;
+      // Bayangan luar kemudi setir
+      ctx.shadowColor = 'rgba(0,0,0,0.7)';
+      ctx.shadowBlur = 10;
+
+      // Lingkar luar kemudi (sport rim tebal)
+      ctx.lineWidth = 18;
       ctx.strokeStyle = '#0f172a';
       ctx.beginPath();
-      ctx.arc(0, 0, 58, 0, Math.PI * 2);
+      ctx.arc(0, 0, 56, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Aksen warna pegangan kiri & kanan sesuai warna mobil pilihan siswa
+      ctx.lineWidth = 15;
+      ctx.strokeStyle = playerConfig.kartColor || '#e11d48';
+      ctx.beginPath();
+      ctx.arc(0, 0, 56, Math.PI * 0.72, Math.PI * 1.28);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(0, 0, 56, -Math.PI * 0.28, Math.PI * 0.28);
       ctx.stroke();
 
-      ctx.lineWidth = 14;
-      ctx.strokeStyle = playerConfig.kartColor;
+      // Garis tengah racing 12 o'clock stripe (Neon Yellow centering marker)
+      ctx.lineWidth = 17;
+      ctx.strokeStyle = '#ffd600';
       ctx.beginPath();
-      ctx.arc(0, 0, 58, Math.PI * 0.75, Math.PI * 1.25);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.arc(0, 0, 58, -Math.PI * 0.25, Math.PI * 0.25);
+      ctx.arc(0, 0, 56, -Math.PI * 0.54, -Math.PI * 0.46);
       ctx.stroke();
 
+      // Palang jari-jari setir (3-spoke sport steering wheel)
       ctx.fillStyle = '#1e293b';
-      ctx.fillRect(-54, -7, 108, 14);
-      ctx.fillRect(-8, 0, 16, 54);
+      ctx.fillRect(-52, -8, 104, 16);
+      ctx.fillRect(-9, 0, 18, 52);
 
+      // Garis metalik palang
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(-52, -8, 104, 16);
+      ctx.strokeRect(-9, 0, 18, 52);
+
+      // Klakson / Hub Pusat Setir
       ctx.fillStyle = '#070b14';
       ctx.beginPath();
-      ctx.arc(0, 0, 20, 0, Math.PI * 2);
+      ctx.arc(0, 0, 22, 0, Math.PI * 2);
       ctx.fill();
 
+      // Lingkaran emas lambang pusat
       ctx.strokeStyle = '#ffd600';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 2.5;
       ctx.stroke();
 
+      // Tulisan MTsN 6 pada klakson
       ctx.fillStyle = '#ffd600';
-      ctx.font = 'bold 9px Segoe UI';
+      ctx.font = 'bold 9px "Segoe UI", sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText("MTsN 6", 0, 3);
+      ctx.textBaseline = 'middle';
+      ctx.fillText("MTsN 6", 0, -2);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = 'bold 7px "Segoe UI", sans-serif';
+      ctx.fillText("SPEED", 0, 8);
 
       ctx.restore();
     }
@@ -2288,8 +2422,18 @@
         playerCar.spinTimer--;
         if (playerCar.spinTimer <= 0) playerCar.isSpinning = false;
       } else {
-        if (keys.left) playerCar.angle -= 0.055 * (playerCar.speed > 0.5 ? 1 : 0.4);
-        if (keys.right) playerCar.angle += 0.055 * (playerCar.speed > 0.5 ? 1 : 0.4);
+        // Kontrol Belok Kemudi: Kombinasi keyboard, tombol samping, dan putaran/drag setir interaktif
+        let steerDir = 0;
+        if (keys.left) steerDir -= 1;
+        if (keys.right) steerDir += 1;
+        if (isSteeringDragging) steerDir += activeSteerValue;
+
+        steerDir = Math.max(-1, Math.min(1, steerDir));
+
+        if (Math.abs(steerDir) > 0.03) {
+          const turnMultiplier = Math.abs(playerCar.speed) > 0.5 ? 1 : 0.45;
+          playerCar.angle += steerDir * 0.058 * turnMultiplier;
+        }
 
         const topLimit = playerCar.isBoosting ? playerCar.boostSpeed : playerCar.maxSpeed;
         if (keys.up) {
@@ -2936,8 +3080,8 @@ ${soal.pembahasan}
 
     // FITUR KECANGGIHAN AI GENERATOR SOAL KREATIF DENGAN DESKRIPSI GURU
     function generateQuestionsWithAI() {
-      const grade = document.getElementById('aiGradeSelect').value;
-      const qType = document.getElementById('aiQuestionTypeSelect').value;
+      const grade = (document.getElementById('aiGradeSelect') ? document.getElementById('aiGradeSelect').value : 'VII');
+      const customTopic = (document.getElementById('aiTopicInput') ? document.getElementById('aiTopicInput').value.trim() : '');
       const count = parseInt(document.getElementById('aiCountInput').value, 10) || 40;
       const customPrompt = document.getElementById('aiCustomPrompt').value.trim();
       const loading = document.getElementById('aiLoadingStatus');
@@ -2988,14 +3132,16 @@ ${soal.pembahasan}
         for (let i = 1; i <= count; i++) {
           const item = syllabus[(i - 1) % syllabus.length];
           const questionId = i;
+          const topicHeader = customTopic ? `${customTopic} (Kasus ${i})` : item.topic;
+          const caseStudy = customTopic ? `studi kasus materi "${customTopic}" (${item.case})` : `kejadian: "${item.case}"`;
 
           aiGenerated.push({
             id: questionId,
             tipe: "DESKRIPTIF",
-            topik: `Fikih Kelas ${grade} - ${item.topic}`,
-            soal: `${promptNote}Studi Kasus Deskriptif: Di madrasah, siswa mengamati kejadian: "${item.case}". Bagaimana pandangan dan penalaran syar'i mengenai hukum kasus ini sesuai ketentuan mazhab Syafi'i? Tuliskan responmu di bawah ini untuk disimak dan dijelaskan oleh guru!`,
+            topik: `Fikih Kelas ${grade} - ${topicHeader}`,
+            soal: `${promptNote}Studi Kasus Materi: Di madrasah, siswa mengamati ${caseStudy}. Bagaimana pandangan dan penalaran syar'i mengenai hukum kasus ini sesuai ketentuan fiqih mazhab Syafi'i? Tuliskan penjelasan analisismu untuk dibahas bersama guru!`,
             kunci: item.kw,
-            pembahasan: `📖 KASUS NYATA: "${item.case}"\n⚖️ HUKUM SYAR'I (MAZHAB SYAFI'I): Sah/Wajib dipenuhi sesuai ketentuan rukun "${item.kw}".\n👨‍🏫 POIN PENJELASAN GURU DI KELAS:\n1. Menguraikan dalil Al-Qur'an / Hadis yang mendasari materi ${item.topic}.\n2. Menjelaskan rukun dan syarat sah agar amalan siswa sah secara syariat.\n3. Membimbing siswa menyimpulkan adab dan solusi hukum sehari-hari.`
+            pembahasan: `📖 MATERI & KASUS: "${topicHeader}"\n⚖️ HUKUM SYAR'I (MAZHAB SYAFI'I): Sah/Wajib dipenuhi sesuai ketentuan rukun/kaidah "${item.kw}".\n👨‍🏫 POIN PENJELASAN GURU DI KELAS:\n1. Menguraikan dalil Al-Qur'an / Hadis yang mendasari materi ${topicHeader}.\n2. Menjelaskan rukun dan syarat sah agar ibadah/amalan siswa sah secara syariat.\n3. Membimbing siswa menyimpulkan solusi hukum sehari-hari.`
           });
         }
 
@@ -3003,7 +3149,7 @@ ${soal.pembahasan}
         localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
         generateQuestionBoxes();
 
-        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir Soal Cerita Deskriptif Fikih Kelas ${grade} MTsN 6 Malang sesuai deskripsi Anda! Soal siap ditelusuri di sirkuit dan dijelaskan oleh guru.`);
+        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir Soal Cerita Deskriptif Fikih Kelas ${grade} MTsN 6 Malang${customTopic ? ` dengan materi "${customTopic}"` : ''} sesuai deskripsi Anda! Soal siap ditelusuri di sirkuit dan dijelaskan oleh guru.`);
         closeAdminModal();
       }, 800);
     }
