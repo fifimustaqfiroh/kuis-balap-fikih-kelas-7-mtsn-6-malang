@@ -401,23 +401,32 @@
       font-weight: bold;
     }
 
-    /* KOKPIT SETIR MOBIL & PEDAL MENYETIR */
+    /* KOKPIT SETIR MOBIL & POD PEDAL HYPER SPORT CANGGIH */
     .cockpit-bottom {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       width: 100%;
-      padding-bottom: 10px;
+      padding: 8px 16px max(12px, env(safe-area-inset-bottom)) 16px;
+      box-sizing: border-box;
+      gap: 12px;
+      z-index: 50;
     }
     .steering-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
+      background: rgba(8, 14, 28, 0.78);
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 24px;
+      padding: 6px 10px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7);
     }
     #steeringWheel {
-      width: 155px;
-      height: 155px;
+      width: 145px;
+      height: 145px;
       filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
       transition: transform 0.08s ease-out;
       cursor: grab;
@@ -427,10 +436,6 @@
     }
     #steeringWheel:active {
       cursor: grabbing;
-    }
-    .action-pedals {
-      display: flex;
-      gap: 14px;
     }
     .ctrl-btn {
       width: 65px;
@@ -452,13 +457,243 @@
     .ctrl-btn:active {
       transform: scale(0.92);
     }
-    .pedal-gas {
-      background: linear-gradient(135deg, rgba(0, 230, 118, 0.45), rgba(0, 161, 82, 0.6));
-      border-color: var(--primary);
+
+    /* POD PEDAL BALAP HYPER CANGGIH (GAS & REM) */
+    .action-pedals-pod {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      background: linear-gradient(180deg, rgba(13, 20, 36, 0.94), rgba(4, 8, 18, 0.98));
+      border: 2px solid rgba(0, 230, 118, 0.35);
+      border-radius: 26px;
+      padding: 10px 14px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 230, 118, 0.15);
+      backdrop-filter: blur(14px);
     }
-    .pedal-brake {
-      background: linear-gradient(135deg, rgba(255, 23, 68, 0.45), rgba(183, 28, 28, 0.6));
-      border-color: var(--danger);
+
+    /* ELEMEN PEDAL BALAP REALISTIS */
+    .racing-pedal {
+      position: relative;
+      width: 78px;
+      height: 120px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 6px 7px 6px;
+      box-sizing: border-box;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      transition: all 0.08s ease-out;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.25);
+    }
+
+    /* PEDAL GAS (AKSELERATOR) */
+    .racing-pedal.pedal-gas {
+      background: linear-gradient(180deg, #163625 0%, #0d2719 45%, #05190d 100%);
+      border: 3px solid #00e676;
+      box-shadow: 0 8px 25px rgba(0, 230, 118, 0.35), inset 0 1px 2px rgba(255,255,255,0.4), inset 0 0 15px rgba(0, 230, 118, 0.2);
+    }
+    .racing-pedal.pedal-gas:hover {
+      box-shadow: 0 8px 30px rgba(0, 230, 118, 0.5), inset 0 0 20px rgba(0, 230, 118, 0.35);
+    }
+    .racing-pedal.pedal-gas:active,
+    .racing-pedal.pedal-gas.pressed {
+      transform: translateY(6px) scale(0.95);
+      background: linear-gradient(180deg, #00e676 0%, #00a854 50%, #004d26 100%);
+      box-shadow: 0 0 40px #00e676, inset 0 0 25px rgba(255,255,255,0.7);
+      border-color: #ffffff;
+    }
+
+    /* PEDAL REM (BRAKE) */
+    .racing-pedal.pedal-brake {
+      background: linear-gradient(180deg, #3d141b 0%, #2b0b11 45%, #190307 100%);
+      border: 3px solid #ff1744;
+      box-shadow: 0 8px 25px rgba(255, 23, 68, 0.35), inset 0 1px 2px rgba(255,255,255,0.4), inset 0 0 15px rgba(255, 23, 68, 0.2);
+    }
+    .racing-pedal.pedal-brake:hover {
+      box-shadow: 0 8px 30px rgba(255, 23, 68, 0.5), inset 0 0 20px rgba(255, 23, 68, 0.35);
+    }
+    .racing-pedal.pedal-brake:active,
+    .racing-pedal.pedal-brake.pressed {
+      transform: translateY(6px) scale(0.95);
+      background: linear-gradient(180deg, #ff1744 0%, #d50000 50%, #630000 100%);
+      box-shadow: 0 0 40px #ff1744, inset 0 0 25px rgba(255,255,255,0.7);
+      border-color: #ffffff;
+    }
+
+    /* KONTEN PEDAL */
+    .pedal-header-glow {
+      width: 80%;
+      height: 4px;
+      border-radius: 4px;
+      margin-bottom: 2px;
+    }
+    .pedal-gas .pedal-header-glow {
+      background: #00e676;
+      box-shadow: 0 0 10px #00e676;
+    }
+    .pedal-brake .pedal-header-glow {
+      background: #ff1744;
+      box-shadow: 0 0 10px #ff1744;
+    }
+
+    .pedal-icon {
+      font-size: 24px;
+      line-height: 1;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+    }
+    .pedal-main-text {
+      font-size: 22px;
+      font-weight: 900;
+      color: #ffffff;
+      letter-spacing: 1.5px;
+      line-height: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    }
+    .pedal-sub-text {
+      font-size: 8px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* TREADS ANTI-SELIP METALIK */
+    .pedal-treads {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      width: 70%;
+      margin: 2px 0;
+    }
+    .pedal-tread-line {
+      height: 3px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 2px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.5);
+    }
+
+    /* METERAN LED RPM CANGGIH PADA PEDAL GAS */
+    .pedal-led-meter {
+      display: flex;
+      gap: 3px;
+      width: 85%;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .led-bar {
+      flex: 1;
+      height: 5px;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.12);
+      transition: background 0.08s, box-shadow 0.08s;
+    }
+    .led-bar.lit:nth-child(1), .led-bar.lit:nth-child(2) {
+      background: #00e676;
+      box-shadow: 0 0 8px #00e676;
+    }
+    .led-bar.lit:nth-child(3), .led-bar.lit:nth-child(4) {
+      background: #ffd600;
+      box-shadow: 0 0 8px #ffd600;
+    }
+    .led-bar.lit:nth-child(5) {
+      background: #ff1744;
+      box-shadow: 0 0 10px #ff1744;
+    }
+
+    /* TAG STATUS DINAMIS DI BAWAH PEDAL */
+    .pedal-status-tag {
+      font-size: 9px;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .pedal-gas .pedal-status-tag {
+      background: rgba(0, 230, 118, 0.2);
+      color: #69f0ae;
+      border: 1px solid rgba(0, 230, 118, 0.4);
+    }
+    .pedal-brake .pedal-status-tag {
+      background: rgba(255, 23, 68, 0.2);
+      color: #ff8a80;
+      border: 1px solid rgba(255, 23, 68, 0.4);
+    }
+
+    /* RESPONSIVE LAYOUT KHUSUS HP (SMARTPHONE) */
+    @media (max-width: 650px) {
+      .cockpit-bottom {
+        padding: 4px 8px max(10px, env(safe-area-inset-bottom)) 8px;
+        gap: 6px;
+      }
+      .steering-container {
+        padding: 4px 6px;
+        border-radius: 18px;
+      }
+      #steeringWheel {
+        width: 118px;
+        height: 118px;
+      }
+      .ctrl-btn.steer-btn {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 14px !important;
+      }
+      .action-pedals-pod {
+        padding: 6px 8px;
+        gap: 8px;
+        border-radius: 20px;
+      }
+      .racing-pedal {
+        width: 66px;
+        height: 104px;
+        padding: 6px 4px 5px 4px;
+      }
+      .pedal-icon {
+        font-size: 20px;
+      }
+      .pedal-main-text {
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      .pedal-status-tag {
+        font-size: 8px;
+        padding: 1px 4px;
+      }
+      .hud-top {
+        margin-left: 0 !important;
+        gap: 6px;
+      }
+      .telemetry-card {
+        padding: 6px 8px;
+        gap: 8px;
+      }
+      .stat-value {
+        font-size: 14px;
+      }
+      .radar-container {
+        transform: scale(0.8);
+        transform-origin: top right;
+      }
+      .mini-leaderboard {
+        width: 155px;
+        max-height: 130px;
+        font-size: 10px;
+        top: 68px;
+        right: 8px;
+      }
+      .event-ticker {
+        font-size: 10px;
+        padding: 4px 10px;
+        top: 60px;
+        max-width: 90%;
+      }
     }
 
     /* MODAL KOTAK SOAL MISTERI */
@@ -873,9 +1108,38 @@
         <span style="font-size:10px; color:#a7f3d0; font-weight:bold; margin-top:3px; text-shadow:0 1px 2px #000;">PUTAR / DRAG SETIR UNTUK KEMUDI MOBIL</span>
       </div>
 
-      <div class="action-pedals">
-        <div class="ctrl-btn pedal-brake" id="btnBrake">REM</div>
-        <div class="ctrl-btn pedal-gas" id="btnGas">GAS</div>
+      <!-- POD PEDAL BALAP HYPER CANGGIH (GAS & REM) -->
+      <div class="action-pedals-pod hud-interactive" id="pedalContainer">
+        <!-- PEDAL REM (BRAKE) SPORT -->
+        <div class="racing-pedal pedal-brake" id="btnBrake" title="Injak Rem (Deselerasi / Decit Ban)">
+          <div class="pedal-header-glow"></div>
+          <div class="pedal-icon">🛑</div>
+          <div class="pedal-main-text">REM</div>
+          <div class="pedal-sub-text">BRAKE</div>
+          <div class="pedal-treads">
+            <span class="pedal-tread-line"></span>
+            <span class="pedal-tread-line"></span>
+            <span class="pedal-tread-line"></span>
+          </div>
+          <div class="pedal-status-tag" id="tagBrakeStatus">STANDBY</div>
+        </div>
+
+        <!-- PEDAL GAS (ACCELERATOR) HYPER SPORT -->
+        <div class="racing-pedal pedal-gas" id="btnGas" title="Injak Gas (Geber Mesin & Turbo)">
+          <div class="pedal-header-glow"></div>
+          <div class="pedal-icon">⚡</div>
+          <div class="pedal-main-text">GAS</div>
+          <div class="pedal-sub-text">THROTTLE</div>
+          <!-- LED THROTTLE RPM METER -->
+          <div class="pedal-led-meter" id="pedalLedMeter">
+            <span class="led-bar" id="led1"></span>
+            <span class="led-bar" id="led2"></span>
+            <span class="led-bar" id="led3"></span>
+            <span class="led-bar" id="led4"></span>
+            <span class="led-bar" id="led5"></span>
+          </div>
+          <div class="pedal-status-tag" id="tagGasStatus">READY</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1185,14 +1449,25 @@
     const Sound = {
       ctx: null,
       isMuted: false,
-      engineOsc: null,
+      engineOsc1: null,
+      engineOsc2: null,
+      engineSubOsc: null,
+      engineFilter: null,
+      engineDist: null,
       engineGain: null,
+      turboOsc: null,
+      turboGain: null,
+      isEngineRunning: false,
       bgmTimer: null,
       bgmStep: 0,
+      currentGear: 1,
+      wasAccelerating: false,
+      isScreeching: false,
 
       init() {
         if (!this.ctx) {
-          this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContextClass();
         }
         if (this.ctx.state === 'suspended') this.ctx.resume();
       },
@@ -1200,30 +1475,223 @@
       startEngineSound() {
         if (this.isMuted) return;
         this.init();
-        if (this.engineOsc) return;
+        if (this.isEngineRunning) return;
 
-        this.engineOsc = this.ctx.createOscillator();
-        this.engineGain = this.ctx.createGain();
+        try {
+          const now = this.ctx.currentTime;
 
-        this.engineOsc.type = 'sawtooth';
-        this.engineOsc.frequency.setValueAtTime(45, this.ctx.currentTime);
-        this.engineGain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+          // 1. Dual Detuned Sawtooth (Suara Mesin Balap V8 Menggelegar)
+          this.engineOsc1 = this.ctx.createOscillator();
+          this.engineOsc2 = this.ctx.createOscillator();
+          this.engineOsc1.type = 'sawtooth';
+          this.engineOsc2.type = 'sawtooth';
+          this.engineOsc1.frequency.setValueAtTime(48, now);
+          this.engineOsc2.frequency.setValueAtTime(48.4, now); // +8 cents chorus
 
-        const filter = this.ctx.createBiquadFilter();
-        filter.type = 'lowpass';
-        filter.frequency.setValueAtTime(400, this.ctx.currentTime);
+          // 2. Sub-Bass Cylinder Rumble (Getaran Rendah Knalpot Sport)
+          this.engineSubOsc = this.ctx.createOscillator();
+          this.engineSubOsc.type = 'triangle';
+          this.engineSubOsc.frequency.setValueAtTime(24, now);
 
-        this.engineOsc.connect(filter);
-        filter.connect(this.engineGain);
-        this.engineGain.connect(this.ctx.destination);
+          // 3. Resonant Lowpass Filter (Sweep Knalpot Balap Agresif)
+          this.engineFilter = this.ctx.createBiquadFilter();
+          this.engineFilter.type = 'lowpass';
+          this.engineFilter.frequency.setValueAtTime(420, now);
+          this.engineFilter.Q.setValueAtTime(3.2, now);
 
-        this.engineOsc.start();
+          // 4. WaveShaper Overdrive (Saturasi Analog Khas Mobil Balap Asli)
+          this.engineDist = this.ctx.createWaveShaper();
+          this.engineDist.curve = this.makeSoftClipCurve();
+          this.engineDist.oversample = '2x';
+
+          // 5. Desisan Turbocharger Spooling
+          this.turboOsc = this.ctx.createOscillator();
+          this.turboGain = this.ctx.createGain();
+          this.turboOsc.type = 'sine';
+          this.turboOsc.frequency.setValueAtTime(1400, now);
+          this.turboGain.gain.setValueAtTime(0.0001, now);
+
+          const turboFilter = this.ctx.createBiquadFilter();
+          turboFilter.type = 'bandpass';
+          turboFilter.frequency.setValueAtTime(2400, now);
+          turboFilter.Q.setValueAtTime(4, now);
+          this.turboOsc.connect(turboFilter);
+          turboFilter.connect(this.turboGain);
+
+          // 6. Master Engine Gain Node
+          this.engineGain = this.ctx.createGain();
+          this.engineGain.gain.setValueAtTime(0.12, now);
+
+          // Hubungkan semua osc ke filter -> distorsi -> gain -> destination
+          this.engineOsc1.connect(this.engineFilter);
+          this.engineOsc2.connect(this.engineFilter);
+          this.engineSubOsc.connect(this.engineFilter);
+
+          this.engineFilter.connect(this.engineDist);
+          this.engineDist.connect(this.engineGain);
+          this.turboGain.connect(this.engineGain);
+          this.engineGain.connect(this.ctx.destination);
+
+          this.engineOsc1.start(now);
+          this.engineOsc2.start(now);
+          this.engineSubOsc.start(now);
+          this.turboOsc.start(now);
+
+          this.isEngineRunning = true;
+        } catch (err) {
+          console.warn("Gagal inisialisasi audio mesin:", err);
+        }
       },
 
-      updateEnginePitch(speedRatio) {
-        if (!this.engineOsc || this.isMuted) return;
-        const targetFreq = 45 + Math.abs(speedRatio) * 160;
-        this.engineOsc.frequency.setTargetAtTime(targetFreq, this.ctx.currentTime, 0.08);
+      makeSoftClipCurve() {
+        const samples = 1024;
+        const curve = new Float32Array(samples);
+        for (let i = 0; i < samples; i++) {
+          const x = (i * 2) / samples - 1;
+          curve[i] = Math.tanh(x * 1.8);
+        }
+        return curve;
+      },
+
+      updateEnginePitch(speedRatio, isAccelerating = false, isBraking = false, isHardSteering = false) {
+        if (!this.isEngineRunning || this.isMuted || !this.ctx) return;
+
+        const now = this.ctx.currentTime;
+        const absRatio = Math.max(0, Math.min(1.25, Math.abs(speedRatio)));
+
+        // Simulasi Oper Gigi Balap Berurutan (Gigi 1 s/d 4)
+        let gear = 1;
+        let gearFraction = 0;
+        if (absRatio < 0.28) {
+          gear = 1;
+          gearFraction = absRatio / 0.28;
+        } else if (absRatio < 0.58) {
+          gear = 2;
+          gearFraction = (absRatio - 0.28) / 0.30;
+        } else if (absRatio < 0.88) {
+          gear = 3;
+          gearFraction = (absRatio - 0.58) / 0.30;
+        } else {
+          gear = 4;
+          gearFraction = (absRatio - 0.88) / 0.37;
+        }
+
+        const gearBaseMin = [48, 68, 92, 120];
+        const gearBaseMax = [135, 168, 205, 260];
+        const minF = gearBaseMin[gear - 1];
+        const maxF = gearBaseMax[gear - 1];
+        let targetFreq = minF + gearFraction * (maxF - minF);
+
+        if (isAccelerating) {
+          targetFreq *= 1.15;
+        } else if (isBraking) {
+          targetFreq *= 0.88;
+        }
+
+        // Terapkan pitch mesin
+        this.engineOsc1.frequency.setTargetAtTime(targetFreq, now, 0.06);
+        this.engineOsc2.frequency.setTargetAtTime(targetFreq * 1.008, now, 0.06);
+        this.engineSubOsc.frequency.setTargetAtTime(targetFreq * 0.5, now, 0.06);
+
+        // Filter knalpot membuka lebar saat digeber
+        let filterFreq = 420 + (absRatio * 1800);
+        if (isAccelerating) filterFreq += 900;
+        if (typeof playerCar !== 'undefined' && playerCar.isBoosting) filterFreq += 1100;
+        this.engineFilter.frequency.setTargetAtTime(Math.min(3800, filterFreq), now, 0.08);
+
+        // Volume deru mesin
+        let masterGain = 0.12 + (absRatio * 0.10);
+        if (isAccelerating) masterGain += 0.04;
+        if (typeof playerCar !== 'undefined' && playerCar.isBoosting) masterGain += 0.06;
+        this.engineGain.gain.setTargetAtTime(masterGain, now, 0.08);
+
+        // Desisan hembusan turbo
+        if (isAccelerating && absRatio > 0.25) {
+          const turboTargetFreq = 1400 + (absRatio * 1800);
+          this.turboOsc.frequency.setTargetAtTime(turboTargetFreq, now, 0.1);
+          this.turboGain.gain.setTargetAtTime(0.028, now, 0.12);
+        } else {
+          this.turboGain.gain.setTargetAtTime(0.0001, now, 0.18);
+        }
+
+        // Suara letupan knalpot (Exhaust Backfire Pop) saat mendadak lepas gas di kecepatan tinggi
+        if (this.wasAccelerating && !isAccelerating && absRatio > 0.35) {
+          this.playExhaustPop();
+        }
+        this.wasAccelerating = isAccelerating;
+
+        // Suara decit ban saat rem keras atau belokan tajam di kecepatan tinggi
+        if ((isBraking && absRatio > 0.2) || isHardSteering) {
+          this.playTireScreech();
+        }
+      },
+
+      playExhaustPop() {
+        if (this.isMuted || !this.ctx) return;
+        const now = this.ctx.currentTime;
+        const popCount = 2 + Math.floor(Math.random() * 2);
+        for (let i = 0; i < popCount; i++) {
+          const t = now + (i * 0.07) + (Math.random() * 0.03);
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          const filter = this.ctx.createBiquadFilter();
+
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(130 + Math.random() * 80, t);
+          osc.frequency.exponentialRampToValueAtTime(35, t + 0.06);
+
+          filter.type = 'lowpass';
+          filter.frequency.setValueAtTime(380, t);
+
+          gain.gain.setValueAtTime(0.22, t);
+          gain.gain.exponentialRampToValueAtTime(0.001, t + 0.06);
+
+          osc.connect(filter);
+          filter.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start(t);
+          osc.stop(t + 0.07);
+        }
+      },
+
+      playTireScreech() {
+        if (this.isMuted || !this.ctx || this.isScreeching) return;
+        this.isScreeching = true;
+        const now = this.ctx.currentTime;
+
+        const osc = this.ctx.createOscillator();
+        const mod = this.ctx.createOscillator();
+        const modGain = this.ctx.createGain();
+        const mainGain = this.ctx.createGain();
+        const filter = this.ctx.createBiquadFilter();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(900 + Math.random() * 150, now);
+        osc.frequency.linearRampToValueAtTime(1150, now + 0.22);
+
+        mod.type = 'square';
+        mod.frequency.setValueAtTime(95, now);
+        modGain.gain.setValueAtTime(320, now);
+
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1250, now);
+        filter.Q.setValueAtTime(3.5, now);
+
+        mainGain.gain.setValueAtTime(0.075, now);
+        mainGain.gain.exponentialRampToValueAtTime(0.001, now + 0.26);
+
+        mod.connect(osc.frequency);
+        osc.connect(filter);
+        filter.connect(mainGain);
+        mainGain.connect(this.ctx.destination);
+
+        mod.start(now);
+        osc.start(now);
+        mod.stop(now + 0.28);
+        osc.stop(now + 0.28);
+
+        setTimeout(() => { this.isScreeching = false; }, 260);
       },
 
       startRacingMusic() {
@@ -1419,10 +1887,11 @@
 
     function toggleAudio() {
       Sound.isMuted = !Sound.isMuted;
-      document.getElementById('btnAudioToggle').innerText = Sound.isMuted ? '🔇 Musik: OFF' : '🔊 Musik: ON';
+      document.getElementById('btnAudioToggle').innerText = Sound.isMuted ? '🔇 Audio: OFF' : '🔊 Audio: ON';
       if (Sound.isMuted) {
-        if (Sound.engineGain) Sound.engineGain.gain.setValueAtTime(0, Sound.ctx.currentTime);
+        if (Sound.engineGain && Sound.ctx) Sound.engineGain.gain.setValueAtTime(0, Sound.ctx.currentTime);
       } else {
+        if (Sound.engineGain && Sound.ctx) Sound.engineGain.gain.setValueAtTime(0.12, Sound.ctx.currentTime);
         Sound.startEngineSound();
         Sound.startRacingMusic();
       }
@@ -1854,6 +2323,32 @@
       if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') keys.right = false;
     });
 
+    function setupPedalTouch(id, k) {
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const press = e => {
+        if (e && e.cancelable) e.preventDefault();
+        keys[k] = true;
+        Sound.init();
+        if (!Sound.isEngineRunning && !isCountdownActive) {
+          Sound.startEngineSound();
+          Sound.startRacingMusic();
+        }
+      };
+      const release = e => {
+        if (e && e.cancelable) e.preventDefault();
+        keys[k] = false;
+      };
+
+      el.addEventListener('touchstart', press, { passive: false });
+      el.addEventListener('touchend', release, { passive: false });
+      el.addEventListener('touchcancel', release, { passive: false });
+      el.addEventListener('mousedown', press);
+      el.addEventListener('mouseup', release);
+      el.addEventListener('mouseleave', release);
+    }
+
     function setupTouch(id, k) {
       const el = document.getElementById(id);
       if (!el) return;
@@ -1864,10 +2359,56 @@
       el.addEventListener('mouseup', () => keys[k] = false);
       el.addEventListener('mouseleave', () => keys[k] = false);
     }
-    setupTouch('btnGas', 'up');
-    setupTouch('btnBrake', 'down');
+
+    setupPedalTouch('btnGas', 'up');
+    setupPedalTouch('btnBrake', 'down');
     setupTouch('btnSteerLeft', 'left');
     setupTouch('btnSteerRight', 'right');
+
+    function updatePedalVisuals() {
+      const isGasActive = keys.up;
+      const isBrakeActive = keys.down;
+      const gasPedal = document.getElementById('btnGas');
+      const brakePedal = document.getElementById('btnBrake');
+      const tagGas = document.getElementById('tagGasStatus');
+      const tagBrake = document.getElementById('tagBrakeStatus');
+
+      if (gasPedal) {
+        if (isGasActive) {
+          gasPedal.classList.add('pressed');
+          if (tagGas) tagGas.innerText = (typeof playerCar !== 'undefined' && playerCar.isBoosting) ? '⚡ NITRO BOOST!' : '🔥 FULL GAS!';
+        } else {
+          gasPedal.classList.remove('pressed');
+          if (tagGas) tagGas.innerText = 'READY';
+        }
+      }
+
+      if (brakePedal) {
+        if (isBrakeActive) {
+          brakePedal.classList.add('pressed');
+          if (tagBrake) tagBrake.innerText = '🛑 ABS AKTIF';
+        } else {
+          brakePedal.classList.remove('pressed');
+          if (tagBrake) tagBrake.innerText = 'STANDBY';
+        }
+      }
+
+      // Dynamic LED RPM Meter on Gas Pedal
+      const spd = (typeof playerCar !== 'undefined') ? Math.abs(playerCar.speed) : 0;
+      const maxSpd = (typeof playerCar !== 'undefined') ? playerCar.maxSpeed : 12;
+      const speedRatio = Math.min(1, spd / maxSpd);
+
+      for (let i = 1; i <= 5; i++) {
+        const led = document.getElementById('led' + i);
+        if (led) {
+          if (speedRatio >= i * 0.18 || (isGasActive && i <= 2)) {
+            led.classList.add('lit');
+          } else {
+            led.classList.remove('lit');
+          }
+        }
+      }
+    }
 
     // SISTEM KONTROL SETIR MOBIL BALAP INTERAKTIF (DRAG, PUTAR, KLIK, SENTUH)
     let isSteeringDragging = false;
@@ -2412,10 +2953,14 @@
     }
 
     function updatePhysics() {
+      updatePedalVisuals();
+
       if (isCountdownActive) {
         playerCar.speed = 0;
         return;
       }
+
+      let steerDir = 0;
       if (playerCar.isSpinning) {
         playerCar.angle += 0.24;
         playerCar.speed *= 0.94;
@@ -2423,7 +2968,6 @@
         if (playerCar.spinTimer <= 0) playerCar.isSpinning = false;
       } else {
         // Kontrol Belok Kemudi: Kombinasi keyboard, tombol samping, dan putaran/drag setir interaktif
-        let steerDir = 0;
         if (keys.left) steerDir -= 1;
         if (keys.right) steerDir += 1;
         if (isSteeringDragging) steerDir += activeSteerValue;
@@ -2453,7 +2997,12 @@
       playerCar.x = Math.max(80, Math.min(WORLD_WIDTH - 80, playerCar.x));
       playerCar.y = Math.max(80, Math.min(WORLD_HEIGHT - 80, playerCar.y));
 
-      Sound.updateEnginePitch(playerCar.speed / playerCar.maxSpeed);
+      const speedRatio = playerCar.speed / playerCar.maxSpeed;
+      const isAccelerating = keys.up;
+      const isBraking = keys.down;
+      const isHardSteering = Math.abs(steerDir) > 0.55 && Math.abs(playerCar.speed) > 2.5;
+
+      Sound.updateEnginePitch(speedRatio, isAccelerating, isBraking, isHardSteering);
 
       peerRacers.forEach(p => {
         p.x += Math.cos(p.angle) * p.speed;
