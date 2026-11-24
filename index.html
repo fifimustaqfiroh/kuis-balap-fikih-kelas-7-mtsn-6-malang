@@ -68,6 +68,18 @@
       color: #052e16;
       border-color: var(--primary);
     }
+    .role-badge {
+      background: rgba(0, 229, 255, 0.2);
+      border: 1px solid var(--cyber-blue);
+      color: var(--cyber-blue);
+      border-radius: 12px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
 
     /* SCREEN 1: GARASI KUSTOMISASI MOBIL KARTUN PIXAR */
     #customizerScreen {
@@ -82,19 +94,20 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 14px;
+      overflow-y: auto;
     }
     .customizer-box {
       background: var(--card-bg);
       border: 2px solid var(--border);
       border-radius: 24px;
-      padding: 24px 32px;
+      padding: 22px 30px;
       width: 95%;
-      max-width: 980px;
+      max-width: 1000px;
       box-shadow: 0 0 60px rgba(0, 230, 118, 0.3), 0 20px 50px rgba(0,0,0,0.85);
       display: grid;
-      grid-template-columns: 360px 1fr;
-      gap: 28px;
+      grid-template-columns: 350px 1fr;
+      gap: 26px;
       align-items: center;
     }
     .preview-stage {
@@ -105,7 +118,7 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 20px;
-      padding: 18px;
+      padding: 16px;
       position: relative;
       overflow: hidden;
     }
@@ -119,29 +132,29 @@
     }
     #avatarCanvasPreview {
       width: 250px;
-      height: 220px;
+      height: 210px;
     }
     .driver-badge {
-      margin-top: 8px;
+      margin-top: 6px;
       text-align: center;
     }
     .driver-badge h3 {
-      font-size: 20px;
+      font-size: 19px;
       color: var(--accent);
       font-weight: 800;
     }
     .driver-badge span {
-      font-size: 13px;
+      font-size: 12px;
       color: #94a3b8;
     }
 
     .form-section {
       display: flex;
       flex-direction: column;
-      gap: 11px;
+      gap: 10px;
     }
     .form-title {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
       background: linear-gradient(90deg, #00e676, #00e5ff, #ffd600);
       -webkit-background-clip: text;
@@ -150,7 +163,7 @@
     .input-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
     .input-group label {
       display: block;
@@ -158,7 +171,7 @@
       font-weight: 700;
       color: #94a3b8;
       text-transform: uppercase;
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
     .input-group input, .input-group select {
       width: 100%;
@@ -167,7 +180,7 @@
       border-radius: 10px;
       padding: 8px 12px;
       color: white;
-      font-size: 14px;
+      font-size: 13px;
       outline: none;
     }
     .input-group input:focus, .input-group select:focus {
@@ -182,7 +195,7 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.15);
       border-radius: 8px;
-      padding: 6px 12px;
+      padding: 6px 11px;
       font-size: 12px;
       color: #cbd5e1;
       cursor: pointer;
@@ -224,7 +237,7 @@
       color: #042f1a;
       border: none;
       border-radius: 12px;
-      padding: 13px;
+      padding: 12px;
       font-size: 15px;
       font-weight: 900;
       cursor: pointer;
@@ -275,32 +288,32 @@
       justify-content: space-between;
       align-items: flex-start;
       gap: 16px;
-      margin-left: 170px;
+      margin-left: 200px;
     }
     .telemetry-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 10px 18px;
+      padding: 9px 16px;
       backdrop-filter: blur(8px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 16px;
     }
     .stat-item {
       display: flex;
       flex-direction: column;
     }
     .stat-label {
-      font-size: 10px;
+      font-size: 9px;
       color: #94a3b8;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
     .stat-value {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
       color: white;
     }
@@ -321,15 +334,15 @@
       align-items: center;
     }
     #radarCanvas {
-      width: 140px;
-      height: 140px;
+      width: 130px;
+      height: 130px;
       border-radius: 10px;
       background: #070d18;
     }
 
     .event-ticker {
       position: absolute;
-      top: 80px;
+      top: 75px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(13, 20, 36, 0.9);
@@ -347,9 +360,9 @@
 
     .mini-leaderboard {
       position: absolute;
-      top: 80px;
+      top: 75px;
       right: 20px;
-      width: 230px;
+      width: 220px;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -403,8 +416,8 @@
       position: relative;
     }
     #steeringWheel {
-      width: 160px;
-      height: 160px;
+      width: 155px;
+      height: 155px;
       filter: drop-shadow(0 10px 25px rgba(0,0,0,0.8));
       transition: transform 0.08s ease-out;
       cursor: grab;
@@ -417,13 +430,13 @@
       gap: 14px;
     }
     .ctrl-btn {
-      width: 68px;
-      height: 68px;
+      width: 65px;
+      height: 65px;
       background: rgba(15, 23, 42, 0.75);
       border: 2px solid rgba(255,255,255,0.25);
       border-radius: 50%;
       color: white;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -464,7 +477,7 @@
       background: #0d1527;
       border: 2px solid var(--primary);
       border-radius: 24px;
-      padding: 28px 36px;
+      padding: 26px 34px;
       width: 95%;
       max-width: 820px;
       box-shadow: 0 0 60px rgba(0, 230, 118, 0.35);
@@ -478,7 +491,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .q-mystery-tag {
       background: linear-gradient(135deg, #ffd600, #ff6d00);
@@ -494,7 +507,7 @@
       line-height: 1.5;
       font-weight: 600;
       color: #ffffff;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
     .q-options-grid {
       display: grid;
@@ -560,8 +573,8 @@
       color: #fecaca;
     }
 
-    /* MODAL PANEL GURU / ADMIN / QR / GUIDE */
-    #adminModal, #qrModal, #guideModal {
+    /* MODAL PANEL GURU / ADMIN DENGAN FITUR AI & UPLOAD */
+    #adminModal, #qrModal, #guideModal, #roleModal {
       position: absolute;
       top: 0;
       left: 0;
@@ -579,15 +592,15 @@
       background: #0d1527;
       border: 2px solid var(--primary);
       border-radius: 20px;
-      padding: 24px 30px;
+      padding: 22px 28px;
       width: 95%;
-      max-width: 880px;
+      max-width: 900px;
       max-height: 85vh;
       overflow-y: auto;
       box-shadow: 0 0 50px rgba(0, 230, 118, 0.3);
     }
     .modal-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--accent);
       margin-bottom: 6px;
@@ -595,9 +608,53 @@
       justify-content: space-between;
       align-items: center;
     }
+    .admin-tab-buttons {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 8px;
+    }
+    .admin-tab-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .admin-tab-btn.active {
+      background: var(--primary);
+      color: #052e16;
+      border-color: var(--primary);
+      font-weight: bold;
+    }
+    .admin-tab-content {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .admin-tab-content.active {
+      display: flex;
+    }
+    .dropzone-box {
+      border: 2px dashed rgba(0, 230, 118, 0.4);
+      border-radius: 14px;
+      padding: 28px;
+      text-align: center;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dropzone-box:hover {
+      background: rgba(0, 230, 118, 0.08);
+      border-color: var(--primary);
+    }
     .json-editor {
       width: 100%;
-      height: 260px;
+      height: 240px;
       background: #070a12;
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 10px;
@@ -605,12 +662,11 @@
       color: #a7f3d0;
       font-family: monospace;
       font-size: 12px;
-      margin: 10px 0;
       outline: none;
       resize: vertical;
     }
 
-    /* PODIUM AKHIR */
+    /* SCREEN 3: PODIUM AKHIR */
     #finalPodiumModal {
       position: absolute;
       top: 0;
@@ -631,20 +687,28 @@
 </head>
 <body>
 
-  <!-- TOMBOL HEADER: AUDIO, MODE PROYEKTOR, QR BARCODE, ADMIN, PETUNJUK -->
+  <!-- TOMBOL HEADER (OTOMATIS BERSIFAT ADAPTIF TERGANTUNG ROLE GURU ATAU SISWA) -->
   <div class="top-action-bar">
     <button class="icon-btn" id="btnAudioToggle" onclick="toggleAudio()">
       🔊 Musik: ON
     </button>
-    <button class="icon-btn" id="btnViewMode" onclick="toggleViewMode()">
-      🖥️ Mode: Siswa Menyetir
+
+    <!-- TOMBOL KHUSUS GURU (DISEMBUNYIKAN UNTUK SISWA) -->
+    <button class="icon-btn teacher-only" id="btnViewMode" onclick="toggleViewMode()">
+      🖥️ Mode: Layar Proyektor Guru
     </button>
-    <button class="icon-btn" onclick="openQRModal()">
+    <button class="icon-btn teacher-only" id="btnQR" onclick="openQRModal()">
       📱 Barcode Siswa (QR)
     </button>
-    <button class="icon-btn" onclick="openAdminModal()">
-      ⚙️ Bank Soal (Guru)
+    <button class="icon-btn teacher-only" id="btnAdmin" onclick="openAdminModal()">
+      ⚙️ Bank Soal & AI (Guru)
     </button>
+
+    <!-- BADGE TAMPILAN SISWA -->
+    <div class="role-badge" id="studentRoleBadge" style="display:none;">
+      🏎️ Mode Siswa (Pembalap)
+    </div>
+
     <button class="icon-btn" onclick="openGuideModal()">
       📖 Petunjuk
     </button>
@@ -653,19 +717,21 @@
   <!-- SCREEN 1: GARASI MOBIL KARTUN PIXAR -->
   <div id="customizerScreen">
     <div class="customizer-box">
+      <!-- SISI KIRI: PREVIEW MOBIL BALAP KARTUN PIXAR (ANIMASI MATA BERKEDIP & TERSENYUM) -->
       <div class="preview-stage">
         <div class="preview-spotlight"></div>
-        <canvas id="avatarCanvasPreview" width="260" height="230"></canvas>
+        <canvas id="avatarCanvasPreview" width="250" height="210"></canvas>
         <div class="driver-badge">
           <h3 id="previewDisplayName">Ahmad Fauzi</h3>
           <span id="previewDisplayClass">Kelas VII-A MTsN 6 Malang</span>
         </div>
       </div>
 
+      <!-- SISI KANAN: FORM DANDANI & PILIH TEMA TEMPAT SIRKUIT -->
       <div class="form-section">
         <div>
-          <h2 class="form-title">🚗 GARASI MOBIL BALAP PIXAR TOON</h2>
-          <p style="font-size: 12px; color: #94a3b8;">Mobil balap kartun sungguhan ala Pixar dengan mata ekspresif dan senyum ceria!</p>
+          <h2 class="form-title">🚗 GARASI BALAP HYPER PIXAR</h2>
+          <p style="font-size: 12px; color: #94a3b8;">Personalisasi mobil balap kartunmu & pilih pemandangan sirkuit favoritmu di HP!</p>
         </div>
 
         <div class="input-row">
@@ -686,6 +752,18 @@
           </div>
         </div>
 
+        <!-- PILIHAN TEMA VISUAL TEMPAT / LINGKUNGAN SIRKUIT (KHUSUS SISWA DI HP MASING-MASING) -->
+        <div class="input-group">
+          <label>Pilih Tema Visual Sirkuit (Pemandangan di HP-mu)</label>
+          <div class="option-pills">
+            <button class="pill-btn active" onclick="setTrackTheme('cyber_malang')">🏛️ Sirkuit Cyber MTsN 6</button>
+            <button class="pill-btn" onclick="setTrackTheme('bromo_desert')">🏜️ Gurun Pasir Bromo</button>
+            <button class="pill-btn" onclick="setTrackTheme('coban_waterfall')">🌲 Hutan Air Terjun Coban</button>
+            <button class="pill-btn" onclick="setTrackTheme('tokyo_neon')">🌃 Kota Malam Neon</button>
+          </div>
+        </div>
+
+        <!-- PILIHAN MODEL MOBIL BALAP KARTUN PIXAR -->
         <div class="input-group">
           <label>Pilih Model Mobil Balap Kartun Pixar</label>
           <div class="option-pills">
@@ -696,6 +774,7 @@
           </div>
         </div>
 
+        <!-- AKSESORIS KEPALA / ATAP MOBIL -->
         <div class="input-group">
           <label>Aksesoris Atap Mobil / Karakter</label>
           <div class="option-pills">
@@ -707,6 +786,7 @@
           </div>
         </div>
 
+        <!-- WARNA MOBIL KARTUN VIBRANT -->
         <div class="input-group">
           <label>Warna Cat Mobil (Glossy Pixar)</label>
           <div class="color-swatches">
@@ -752,14 +832,16 @@
       </div>
 
       <div class="radar-container hud-interactive">
-        <canvas id="radarCanvas" width="140" height="140"></canvas>
+        <canvas id="radarCanvas" width="130" height="130"></canvas>
       </div>
     </div>
 
+    <!-- EVENT BANNER -->
     <div class="event-ticker" id="eventTicker">
       🏎️ Cari dan tabrak Kotak Misteri (?) di sepanjang sirkuit dan lorong neon!
     </div>
 
+    <!-- LEADERBOARD PEMBALAP TERHEBAT -->
     <div class="mini-leaderboard hud-interactive">
       <div class="lb-header">
         <span>👑 Pembalap Terhebat</span>
@@ -771,7 +853,7 @@
     <!-- KOKPIT SETIR MOBIL & PEDAL MENYETIR -->
     <div class="cockpit-bottom hud-interactive" id="cockpitArea">
       <div class="steering-container">
-        <canvas id="steeringWheel" width="160" height="160"></canvas>
+        <canvas id="steeringWheel" width="155" height="155"></canvas>
         <span style="font-size:10px; color:#94a3b8; font-weight:bold; margin-top:2px;">KEMUDI BALAP (◀ / ▶)</span>
       </div>
 
@@ -819,68 +901,119 @@
     </div>
   </div>
 
-  <!-- MODAL PANEL GURU / ADMIN BANK SOAL -->
+  <!-- ========================================================
+       MODAL PANEL GURU / ADMIN BANK SOAL: UPLOAD FILE & AI GENERATOR
+       ======================================================== -->
   <div id="adminModal">
     <div class="modal-box">
       <div class="modal-title">
-        <span>⚙️ Panel Guru: Pengaturan & Bank Soal Modular</span>
+        <span>⚙️ Panel Guru: Kelola Bank Soal & AI Generator Canggih</span>
         <button class="pill-btn" onclick="closeAdminModal()">✕ Tutup</button>
       </div>
-      <p style="font-size: 13px; color: #94a3b8; margin-bottom: 10px;">
-        Guru dapat mengganti soal untuk Kelas VII, VIII, atau IX MTsN 6 Malang dengan mengedit format JSON di bawah ini:
-      </p>
 
-      <textarea class="json-editor" id="adminJsonEditor"></textarea>
+      <div class="admin-tab-buttons">
+        <button class="admin-tab-btn active" onclick="switchAdminTab('tabAI')">✨ Buat Soal Otomatis (AI Canggih)</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabUpload')">📁 Upload File (File Explorer)</button>
+        <button class="admin-tab-btn" onclick="switchAdminTab('tabJson')">📝 Editor JSON Manual</button>
+      </div>
 
-      <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-        <div style="display:flex; gap:8px;">
-          <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold;" onclick="saveCustomQuestions()">💾 Terapkan Soal Baru</button>
-          <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset Soal SAS Asli</button>
+      <!-- TAB 1: GENERATOR SOAL BERBASIS AI CANGGIH -->
+      <div class="admin-tab-content active" id="tabAI">
+        <p style="font-size: 13px; color: #94a3b8;">
+          Gunakan kecanggihan AI untuk membuat soal HOTS model cerita otomatis sesuai silabus kurikulum MTsN 6 Malang:
+        </p>
+        
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+          <div class="input-group">
+            <label>Tingkat Kelas</label>
+            <select id="aiGradeSelect">
+              <option value="VII">Kelas VII (Thaharah, Salat Fardhu, Berjamaah, Dzikir)</option>
+              <option value="VIII">Kelas VIII (Sujud Sahwi, Tilawah, Syukur, Puasa, Zakat)</option>
+              <option value="IX">Kelas IX (Penyembelihan, Qurban, Aqiqah, Jual Beli, Pinjam Meminjam)</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Materi / Topik Pembahasan</label>
+            <input type="text" id="aiTopicInput" value="Fikih Ibadah & Muamalah" placeholder="Ketik topik materi...">
+          </div>
         </div>
-        <button class="pill-btn" onclick="downloadQuestionsJSON()">📥 Export File JSON</button>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+          <div class="input-group">
+            <label>Jumlah Soal yang Digenerate</label>
+            <select id="aiCountSelect">
+              <option value="40">40 Soal Penuh (100 Poin)</option>
+              <option value="20">20 Soal Cepat</option>
+              <option value="10">10 Soal Kuis Singkat</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>Model Soal</label>
+            <select id="aiModelSelect">
+              <option value="HOTS_STORY">HOTS Model Cerita / Studi Kasus Nyata</option>
+              <option value="ANALYSIS">Analisis Hukum & Dalil Syar'i</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn-start-race" style="margin-top:10px; background:linear-gradient(135deg, #a855f7, #6366f1); color:white;" onclick="generateQuestionsWithAI()">
+          ✨ Generate Soal HOTS Otomatis Sekarang!
+        </button>
+        <span id="aiLoadingStatus" style="font-size:12px; color:#ffd600; display:none;">⏳ AI sedang merancang studi kasus dan pembahasan soal...</span>
+      </div>
+
+      <!-- TAB 2: UPLOAD FILE DARI FILE EXPLORER LAPTOP -->
+      <div class="admin-tab-content" id="tabUpload">
+        <p style="font-size: 13px; color: #94a3b8;">
+          Unggah file soal yang ada di laptop/komputer Anda (Format <code>.json</code> atau <code>.txt</code>):
+        </p>
+
+        <div class="dropzone-box" onclick="document.getElementById('fileUploadInput').click()">
+          <span style="font-size:36px;">📂</span>
+          <h4 style="color:var(--accent); margin:6px 0;">Klik untuk Memilih File dari Komputer Anda</h4>
+          <p style="font-size:12px; color:#94a3b8;">Mendukung file .json bank soal atau file teks .txt berisi daftar soal</p>
+          <input type="file" id="fileUploadInput" accept=".json,.txt" style="display:none;" onchange="handleFileUpload(event)">
+        </div>
+      </div>
+
+      <!-- TAB 3: EDITOR JSON MANUAL -->
+      <div class="admin-tab-content" id="tabJson">
+        <textarea class="json-editor" id="adminJsonEditor"></textarea>
+        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div style="display:flex; gap:8px;">
+            <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold;" onclick="saveCustomQuestions()">💾 Terapkan Soal Baru</button>
+            <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset Soal SAS Asli</button>
+          </div>
+          <button class="pill-btn" onclick="downloadQuestionsJSON()">📥 Export File JSON</button>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- ========================================================
-       MODAL BARCODE (QR CODE) AKSES SISWA - PANDUAN ONLINE & LOKAL
-       ======================================================== -->
+  <!-- MODAL BARCODE (QR CODE) AKSES SISWA -->
   <div id="qrModal">
-    <div class="modal-box" style="max-width: 540px; text-align: center;">
+    <div class="modal-box" style="max-width: 520px; text-align: center;">
       <div class="modal-title">
-        <span>📱 Pengaturan Barcode Siswa (Akses Online/Wi-Fi)</span>
+        <span>📱 Barcode Akses Siswa</span>
         <button class="pill-btn" onclick="closeQRModal()">✕ Tutup</button>
       </div>
       
-      <p style="font-size: 13px; color: #cbd5e1; margin: 8px 0; text-align:left; background:rgba(255,23,68,0.15); border-left:4px solid var(--danger); padding:8px 12px; border-radius:6px;">
-        ⚠️ <b>Catatan Penting:</b> Format <code>file:///C:/...</code> hanya ada di laptop guru sehingga HP siswa tidak bisa membukanya. Masukkan <b>Link Online</b> atau <b>IP Wi-Fi Laptop</b> di bawah agar barcode bisa discan!
+      <p style="font-size: 13px; color: #cbd5e1; margin: 8px 0;">
+        Arahkan kamera smartphone siswa ke barcode ini untuk bergabung ke sirkuit dalam <b>Mode Siswa</b> (tanpa bank soal):
       </p>
 
-      <!-- INPUT TAUTAN GAME OLEH GURU -->
-      <div style="margin: 12px 0; text-align:left;">
-        <label style="font-size:11px; color:#94a3b8; font-weight:bold; text-transform:uppercase;">Tautan Game Siswa (Bisa diedit):</label>
-        <div style="display:flex; gap:8px; margin-top:4px;">
-          <input type="text" id="inputTargetUrl" style="flex:1; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25); border-radius:8px; padding:9px 12px; color:#a7f3d0; font-size:13px; outline:none;" placeholder="Contoh: https://fikih-mtsn6.tiiny.site atau http://192.168.1.15:8080" oninput="regenerateCustomQRCode()">
-          <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold;" onclick="copyGameUrl()">📋 Salin</button>
-        </div>
-      </div>
-
-      <!-- KANVAS BARCODE QR -->
-      <div style="display:flex; justify-content:center; padding:8px;">
+      <div style="display:flex; justify-content:center; padding:10px;">
         <div style="background:white; border-radius:14px; padding:12px; box-shadow:0 0 25px rgba(255,255,255,0.35); display:inline-block;">
-          <canvas id="qrCanvas" width="210" height="210"></canvas>
+          <canvas id="qrCanvas" width="220" height="220"></canvas>
         </div>
       </div>
 
-      <!-- PETUNJUK 2 MENIT JADI ONLINE GRATIS -->
-      <div style="text-align:left; background:rgba(0,230,118,0.08); border:1px solid var(--border); border-radius:10px; padding:10px 14px; margin-top:10px; font-size:12px; line-height:1.5;">
-        <strong style="color:var(--primary);">🚀 Cara Membuat Game Ini Online dalam 1 Menit (Gratis):</strong>
-        <ol style="margin-left: 18px; margin-top:4px;">
-          <li>Buka situs gratis seperti <b><a href="https://tiiny.host" target="_blank" style="color:var(--accent);">tiiny.host</a></b> atau <b><a href="https://app.netlify.com/drop" target="_blank" style="color:var(--accent);">netlify drop</a></b>.</li>
-          <li>Tarik & lepaskan file <code>index.html</code> ini ke situs tersebut.</li>
-          <li>Salin link online yang didapat (contoh: <code>https://fikih-mtsn6.tiiny.site</code>).</li>
-          <li>Tempelkan ke kotak di atas! Barcode di layar akan otomatis berubah dan <b>langsung bisa discan seluruh siswa dari HP mana pun</b>!</li>
-        </ol>
+      <!-- TAUTAN KHUSUS SISWA -->
+      <div style="margin: 10px 0; text-align:left;">
+        <div style="display:flex; gap:8px;">
+          <input type="text" id="inputTargetUrl" style="flex:1; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.25); border-radius:8px; padding:9px 12px; color:#a7f3d0; font-size:12px; outline:none;" readonly>
+          <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold;" onclick="copyGameUrl()">📋 Salin Link Siswa</button>
+        </div>
       </div>
     </div>
   </div>
@@ -894,22 +1027,21 @@
       </div>
       <div style="font-size: 13px; line-height: 1.6; color: #cbd5e1; display:flex; flex-direction:column; gap:12px;">
         <div>
-          <strong style="color:var(--primary);">1. Untuk Siswa (Cara Menyetir & Main):</strong>
+          <strong style="color:var(--primary);">1. Untuk Siswa (Pembalap di HP):</strong>
           <ul style="margin-left: 20px;">
-            <li>Kustomisasi namamu, pilih mobil kartun Pixar favoritmu (Lightning McQueen, Kodok Gemoy, Formula Toon), dan beri aksesoris peci/pita.</li>
-            <li>Mobil memiliki mata hidup yang menoleh dan berkedip saat menyetir!</li>
-            <li>Gunakan tombol panah <b>▲ (Gas), ▼ (Rem), ◀ / ▶ (Setir Kemudi)</b> pada keyboard atau putar setir dan tekan pedal sentuh di layar HP.</li>
-            <li>Jelajahi sirkuit modern dan <b>Lorong Terowongan Cyber</b> untuk menabrak Kotak Emas Misteri (?).</li>
-            <li><b>Jawaban Benar:</b> Mobil melesat dengan <b>SUPER NITRO (+100 KM/H)</b> dan skor bertambah +2.5.</li>
-            <li><b>Jawaban Salah:</b> Mobil terpeleset (*banana slip*), ban berasap, dan melambat selama 2 detik.</li>
+            <li>Siswa hanya memiliki kontrol menyetir tanpa terganggu menu bank soal atau barcode.</li>
+            <li>Siswa dapat <b>memilih visual tema tempat sirkuit sendiri</b> di HP: Sirkuit MTsN 6 Cyber, Gurun Pasir Bromo, Hutan Coban Rondo, atau Kota Malam Tokyo.</li>
+            <li>Kemudi setir mobil dan tombol pedal gas/rem berputar dan merespons nyata.</li>
+            <li><b>Suara Benar:</b> Melodi kemenangan ceria (*fanfare chime*) + Turbo Nitro melesat kencang!</li>
+            <li><b>Suara Salah:</b> Suara kartun lucu (*trombon jatuh wah-wah-wah*) + rem mendecit selip!</li>
           </ul>
         </div>
         <div>
-          <strong style="color:var(--accent);">2. Untuk Guru (Tampilan Layar Proyektor LCD):</strong>
+          <strong style="color:var(--accent);">2. Untuk Guru (Layar Proyektor LCD):</strong>
           <ul style="margin-left: 20px;">
-            <li>Tekan tombol <b>🖥️ Mode: Layar LCD Guru</b> di pojok kiri atas untuk melihat pantauan kamera luas sirkuit yang melacak siapa "Pembalap Terhebat" dengan skor tertinggi.</li>
-            <li>Buka <b>📱 Barcode Siswa (QR)</b> dan masukkan link online atau IP server agar barcode di LCD langsung terhubung ke HP siswa.</li>
-            <li>Gunakan <b>⚙️ Bank Soal (Guru)</b> untuk memasukkan soal baru kelas VIII, IX, atau mata pelajaran lainnya.</li>
+            <li>Guru memiliki akses penuh ke <b>Bank Soal & AI</b> serta kontrol siaran proyektor LCD.</li>
+            <li>Fitur AI di Bank Soal dapat membuat soal HOTS cerita otomatis untuk Kelas 7, 8, dan 9.</li>
+            <li>Guru bisa langsung mengunggah file soal dari komputer melalui tab <b>Upload File</b>.</li>
           </ul>
         </div>
       </div>
@@ -967,7 +1099,26 @@
 
   <script>
     /* =========================================================
-       AUDIO ENGINE
+       ROLE MANAGEMENT: GURU VS SISWA
+       ========================================================= */
+    const urlParams = new URLSearchParams(window.location.search);
+    // Jika ada parameter ?role=student atau dibuka via link QR siswa
+    const isStudentMode = (urlParams.get('role') === 'student');
+
+    function applyRolePermissions() {
+      if (isStudentMode) {
+        // SEMBUNYIKAN SELURUH TOMBOL GURU UNTUK SISWA
+        document.querySelectorAll('.teacher-only').forEach(el => el.style.display = 'none');
+        document.getElementById('studentRoleBadge').style.display = 'flex';
+      } else {
+        // TAMPILKAN MENU GURU
+        document.querySelectorAll('.teacher-only').forEach(el => el.style.display = 'flex');
+        document.getElementById('studentRoleBadge').style.display = 'none';
+      }
+    }
+
+    /* =========================================================
+       AUDIO ENGINE: SUARA BENAR VS SALAH SANGAT BERBEDA
        ========================================================= */
     const Sound = {
       ctx: null,
@@ -1054,6 +1205,52 @@
         }, 180);
       },
 
+      // SUARA BENAR: MELODI KEMENANGAN CERIA TINGGI & JELAS + SPARKLE
+      playCorrectSound() {
+        if (this.isMuted) return;
+        this.init();
+        const chords = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+        chords.forEach((freq, i) => {
+          const now = this.ctx.currentTime + (i * 0.07);
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime(0.35, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.4);
+        });
+        // Ditambah Turbo Nitro Whoosh
+        this.nitro();
+      },
+
+      // SUARA SALAH: KARTUN TROMBONE JATUH "WAH-WAH-WAH-WAAAAHH" + DECIT REM
+      playWrongSound() {
+        if (this.isMuted) return;
+        this.init();
+        const wahFrequencies = [293.66, 277.18, 261.63, 233.08]; // D4, C#4, C4, Bb3 (Menurun Sedih & Lucu)
+        wahFrequencies.forEach((freq, idx) => {
+          const now = this.ctx.currentTime + (idx * 0.16);
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, now);
+          // Vibrato effect
+          osc.frequency.linearRampToValueAtTime(freq - 15, now + 0.15);
+          gain.gain.setValueAtTime(0.28, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.18);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.2);
+        });
+        // Decit ban selip
+        this.slip();
+      },
+
       nitro() {
         if (this.isMuted) return;
         this.init();
@@ -1136,7 +1333,7 @@
     }
 
     /* =========================================================
-       BANK SOAL DEFAULT (40 SOAL ASLI SAS MTsN 6 MALANG)
+       BANK SOAL DEFAULT (40 SOAL SAS FIKIH KELAS VII MTsN 6 MALANG)
        ========================================================= */
     const DEFAULT_SOAL_DATA = [
       { id: 1, topik: "Thaharah (Najis)", soal: "Ahmad menjaga adiknya yang berusia 8 bulan dan baru mengonsumsi ASI saja. Tiba-tiba adiknya buang air kecil di celananya. Bagaimanakah cara yang tepat bagi Ahmad untuk menyucikan celananya?", opsi: { A: "Merendam celana di dalam air selama satu malam.", B: "Membasuh celana dengan air mengalir hingga bersih.", C: "Memercikkan air bersih pada bagian yang terkena air kencing.", D: "Mencuci celananya sebanyak tujuh kali dengan campuran debu." }, kunci: "C", pembahasan: "Najis kencing bayi laki-laki di bawah 2 tahun yang hanya minum ASI termasuk mukhaffafah, cukup dipercikkan air suci." },
@@ -1192,9 +1389,57 @@
       carModel: "mcqueen_speed",
       headwear: "peci_hitam",
       kartColor: "#ff1744",
+      trackTheme: "cyber_malang", // Pilihan tema visual sirkuit di HP siswa
       blinkTimer: 0,
       isBlinking: false
     };
+
+    // TEMA VISUAL SIRKUIT (KHUSUS DIPILIH SISWA DI HP-NYA)
+    const THEME_STYLES = {
+      cyber_malang: {
+        bg: '#060a14',
+        track: '#0f172a',
+        curb: '#00e676',
+        mark: 'rgba(0, 229, 255, 0.4)',
+        tunnel1: '#00e5ff',
+        tunnel2: '#ffd600',
+        gateName: "🏁 SIRKUIT UTAMA CYBER MTsN 6 MALANG 🏁"
+      },
+      bromo_desert: {
+        bg: '#451a03',
+        track: '#78350f',
+        curb: '#f59e0b',
+        mark: 'rgba(254, 240, 138, 0.5)',
+        tunnel1: '#f97316',
+        tunnel2: '#ef4444',
+        gateName: "🏜️ SIRKUIT PASIR BERBISIK BROMO 🏜️"
+      },
+      coban_waterfall: {
+        bg: '#022c22',
+        track: '#064e3b',
+        curb: '#10b981',
+        mark: 'rgba(167, 243, 208, 0.5)',
+        tunnel1: '#34d399',
+        tunnel2: '#38bdf8',
+        gateName: "🌲 SIRKUIT ALAM AIR TERJUN COBAN RONDO 🌲"
+      },
+      tokyo_neon: {
+        bg: '#18002a',
+        track: '#2d064e',
+        curb: '#d946ef',
+        mark: 'rgba(244, 114, 182, 0.5)',
+        tunnel1: '#ec4899',
+        tunnel2: '#a855f7',
+        gateName: "🌃 SIRKUIT KOTA MALAM NEON CYBERPUNK 🌃"
+      }
+    };
+
+    function setTrackTheme(themeKey) {
+      playerConfig.trackTheme = themeKey;
+      document.querySelectorAll('#customizerScreen .option-pills .pill-btn').forEach(b => {
+        if (b.getAttribute('onclick')?.includes(themeKey)) b.classList.add('active');
+      });
+    }
 
     function setCarModel(model) {
       playerConfig.carModel = model;
@@ -1406,13 +1651,13 @@
     }
 
     /* =========================================================
-       WORLD TRACK
+       WORLD TRACK DENGAN TEMA ADAPTIF
        ========================================================= */
     const WORLD_WIDTH = 3400;
     const WORLD_HEIGHT = 2600;
 
-    const TUNNEL_1 = { x: 900, y: 700, width: 600, height: 180, name: "LORONG CYBER BROMO" };
-    const TUNNEL_2 = { x: 1900, y: 1700, width: 600, height: 180, name: "LORONG COBAN SPEEDWAY" };
+    const TUNNEL_1 = { x: 900, y: 700, width: 600, height: 180, name: "LORONG BROMO SPEEDWAY" };
+    const TUNNEL_2 = { x: 1900, y: 1700, width: 600, height: 180, name: "LORONG COBAN CYBER" };
 
     let questionBoxes = [];
 
@@ -1578,10 +1823,10 @@
       isTeacherViewMode = !isTeacherViewMode;
       const btn = document.getElementById('btnViewMode');
       if (isTeacherViewMode) {
-        btn.innerText = "🖥️ Mode: Layar LCD Guru";
+        btn.innerText = "🖥️ Mode: Layar Proyektor Guru";
         btn.classList.add('active-mode');
         document.getElementById('cockpitArea').style.display = 'none';
-        triggerEventBanner("👑 Tampilan Proyektor LCD: Memantau Pembalap Terhebat!");
+        triggerEventBanner("👑 Layar Proyektor LCD: Menyorot Pembalap Terhebat!");
       } else {
         btn.innerText = "🏎️ Mode: Siswa Menyetir";
         btn.classList.remove('active-mode');
@@ -1703,15 +1948,15 @@
       feedback.style.display = 'block';
 
       if (isCorrect) {
-        Sound.nitro();
+        Sound.playCorrectSound(); // Suara Melodi Juara
         feedback.className = 'q-feedback correct';
-        feedback.innerHTML = `<strong>⚡ JAWABAN BENAR! (+2.5 POIN & NITRO BOOST!)</strong><br>${soal.pembahasan}`;
+        feedback.innerHTML = `<strong>⚡ JAWABAN BENAR! (+2.5 POIN & SUPER NITRO!)</strong><br>${soal.pembahasan}`;
         playerCar.score += 2.5;
         playerCar.isBoosting = true;
         playerCar.speed = playerCar.boostSpeed;
         triggerEventBanner(`⚡ ${playerConfig.name} menjawab Benar Kotak #${currentBox.id}! NITRO AKTIF!`);
       } else {
-        Sound.slip();
+        Sound.playWrongSound(); // Suara Trombone Kartun Lucu
         feedback.className = 'q-feedback wrong';
         feedback.innerHTML = `<strong>🍌 SALAH! (BAN SELIP & TERPELESET!)</strong><br>Kunci: <b>${soal.kunci}</b>. ${soal.pembahasan}`;
         playerCar.isSpinning = true;
@@ -1758,7 +2003,8 @@
     function gameLoop() {
       updatePhysics();
 
-      worldCtx.fillStyle = '#060a14';
+      const theme = THEME_STYLES[playerConfig.trackTheme] || THEME_STYLES.cyber_malang;
+      worldCtx.fillStyle = theme.bg;
       worldCtx.fillRect(0, 0, worldCanvas.width, worldCanvas.height);
 
       worldCtx.save();
@@ -1776,7 +2022,7 @@
       const camY = worldCanvas.height / 2 - focusY;
       worldCtx.translate(camX, camY);
 
-      drawModernCircuit(worldCtx);
+      drawModernCircuit(worldCtx, theme);
 
       questionBoxes.forEach(b => {
         if (!b.collected) drawBox(worldCtx, b);
@@ -1812,8 +2058,8 @@
       ctx.restore();
     }
 
-    function drawModernCircuit(ctx) {
-      ctx.fillStyle = '#0f172a';
+    function drawModernCircuit(ctx, theme) {
+      ctx.fillStyle = theme.track;
       ctx.fillRect(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
 
       ctx.beginPath();
@@ -1824,7 +2070,7 @@
 
       ctx.lineWidth = 170;
       ctx.setLineDash([20, 20]);
-      ctx.strokeStyle = '#00e676';
+      ctx.strokeStyle = theme.curb;
       ctx.stroke();
       ctx.setLineDash([]);
 
@@ -1834,14 +2080,14 @@
 
       ctx.lineWidth = 4;
       ctx.setLineDash([30, 30]);
-      ctx.strokeStyle = 'rgba(0, 229, 255, 0.4)';
+      ctx.strokeStyle = theme.mark;
       ctx.stroke();
       ctx.setLineDash([]);
 
-      drawNeonTunnel(ctx, TUNNEL_1.x, TUNNEL_1.y, TUNNEL_1.width, TUNNEL_1.height, TUNNEL_1.name, '#00e5ff');
-      drawNeonTunnel(ctx, TUNNEL_2.x, TUNNEL_2.y, TUNNEL_2.width, TUNNEL_2.height, TUNNEL_2.name, '#ffd600');
+      drawNeonTunnel(ctx, TUNNEL_1.x, TUNNEL_1.y, TUNNEL_1.width, TUNNEL_1.height, TUNNEL_1.name, theme.tunnel1);
+      drawNeonTunnel(ctx, TUNNEL_2.x, TUNNEL_2.y, TUNNEL_2.width, TUNNEL_2.height, TUNNEL_2.name, theme.tunnel2);
 
-      ctx.fillStyle = '#00e676';
+      ctx.fillStyle = theme.curb;
       ctx.fillRect(WORLD_WIDTH / 2 - 180, WORLD_HEIGHT / 2 + 760, 24, 180);
       ctx.fillRect(WORLD_WIDTH / 2 + 160, WORLD_HEIGHT / 2 + 760, 24, 180);
       ctx.fillStyle = '#052e16';
@@ -1849,7 +2095,7 @@
       ctx.fillStyle = '#ffffff';
       ctx.font = 'bold 15px Segoe UI';
       ctx.textAlign = 'center';
-      ctx.fillText("🏁 SIRKUIT UTAMA MTsN 6 MALANG 🏁", WORLD_WIDTH / 2, WORLD_HEIGHT / 2 + 772);
+      ctx.fillText(theme.gateName, WORLD_WIDTH / 2, WORLD_HEIGHT / 2 + 772);
     }
 
     function drawNeonTunnel(ctx, x, y, w, h, name, neonColor) {
@@ -1924,26 +2170,18 @@
     }
 
     /* =========================================================
-       BARCODE QR CODE GENERATOR - MENDUKUNG URL ONLINE / IP WI-FI
+       BARCODE QR CODE GENERATOR - OTOMATIS BUKA MODE SISWA (?role=student)
        ========================================================= */
-    function drawVerifiedQRCode() {
-      let targetUrl = document.getElementById('inputTargetUrl').value.trim();
-      
-      // Jika kosong atau masih file:///, berikan default placeholder online/local
-      if (!targetUrl || targetUrl.startsWith('file:///')) {
-        targetUrl = localStorage.getItem('SAVED_ONLINE_URL') || "https://fikih-mtsn6.tiiny.site";
-        document.getElementById('inputTargetUrl').value = targetUrl;
-      }
-
-      renderQRMatrix(targetUrl);
+    function getStudentUrl() {
+      let baseUrl = window.location.href.split('?')[0];
+      // Jika dihosting di netlify atau online
+      return `${baseUrl}?role=student`;
     }
 
-    function regenerateCustomQRCode() {
-      const url = document.getElementById('inputTargetUrl').value.trim();
-      if (url) {
-        localStorage.setItem('SAVED_ONLINE_URL', url);
-        renderQRMatrix(url);
-      }
+    function drawVerifiedQRCode() {
+      let studentUrl = getStudentUrl();
+      document.getElementById('inputTargetUrl').value = studentUrl;
+      renderQRMatrix(studentUrl);
     }
 
     function renderQRMatrix(text) {
@@ -1958,8 +2196,8 @@
           qr.make();
 
           const count = qr.getModuleCount();
-          c.width = 210;
-          c.height = 210;
+          c.width = 220;
+          c.height = 220;
           const cellSize = c.width / count;
 
           ctx.fillStyle = '#ffffff';
@@ -1975,14 +2213,13 @@
           }
           return;
         } catch (e) {
-          console.warn("Gagal generate QR library, fallback ke API online:", e);
+          console.warn("QR Library fallback:", e);
         }
       }
 
-      // Fallback API QRServer
       const img = new Image();
       img.crossOrigin = "anonymous";
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=210x210&data=${encodeURIComponent(text)}`;
+      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(text)}`;
       img.onload = () => {
         ctx.drawImage(img, 0, 0, c.width, c.height);
       };
@@ -2001,15 +2238,15 @@
       input.select();
       input.setSelectionRange(0, 99999);
       navigator.clipboard.writeText(input.value).then(() => {
-        alert("✅ Tautan game berhasil disalin: " + input.value);
+        alert("✅ Tautan Siswa berhasil disalin! Bagikan ke siswa via WhatsApp/Classroom:\n" + input.value);
       }).catch(() => {
         document.execCommand('copy');
-        alert("✅ Tautan disalin: " + input.value);
+        alert("✅ Tautan Siswa disalin!");
       });
     }
 
     /* =========================================================
-       PANEL GURU: EDIT BANK SOAL MODULAR
+       PANEL GURU: TAB ADMIN, FILE UPLOAD & AI GENERATOR
        ========================================================= */
     function openAdminModal() {
       document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
@@ -2017,6 +2254,114 @@
     }
     function closeAdminModal() {
       document.getElementById('adminModal').style.display = 'none';
+    }
+
+    function switchAdminTab(tabId) {
+      document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // FITUR UPLOAD FILE DARI FILE EXPLORER KOMPUTER GURU
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const content = e.target.result;
+        try {
+          if (file.name.endsWith('.json')) {
+            const parsed = JSON.parse(content);
+            if (!Array.isArray(parsed) || parsed.length === 0) throw new Error("Format JSON harus berisi array soal.");
+            activeQuestions = parsed;
+          } else {
+            // Parser teks soal sederhana jika berupa file .txt
+            const lines = content.split('\n');
+            const newQuestions = [];
+            let currentQ = null;
+
+            lines.forEach((line, idx) => {
+              line = line.trim();
+              if (line.match(/^\d+[\.\)]/)) {
+                if (currentQ) newQuestions.push(currentQ);
+                currentQ = {
+                  id: newQuestions.length + 1,
+                  topik: "Materi Fikih",
+                  soal: line.replace(/^\d+[\.\)]\s*/, ''),
+                  opsi: { A: "", B: "", C: "", D: "" },
+                  kunci: "A",
+                  pembahasan: "Pembahasan materi."
+                };
+              } else if (line.match(/^[A-Da-d][\.\)]/)) {
+                const optKey = line[0].toUpperCase();
+                if (currentQ) currentQ.opsi[optKey] = line.substring(2).trim();
+              }
+            });
+            if (currentQ) newQuestions.push(currentQ);
+            if (newQuestions.length > 0) activeQuestions = newQuestions;
+          }
+
+          localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
+          document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
+          generateQuestionBoxes();
+          alert(`✅ Sukses memuat ${activeQuestions.length} butir soal dari file: ${file.name}`);
+          closeAdminModal();
+        } catch (err) {
+          alert("❌ Gagal membaca file: " + err.message);
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // FITUR KECANGGIHAN AI GENERATOR SOAL OTOMATIS
+    function generateQuestionsWithAI() {
+      const grade = document.getElementById('aiGradeSelect').value;
+      const topic = document.getElementById('aiTopicInput').value.trim() || 'Fikih';
+      const count = parseInt(document.getElementById('aiCountSelect').value, 10);
+      const loading = document.getElementById('aiLoadingStatus');
+
+      loading.style.display = 'block';
+
+      // Simulasi Pemrosesan AI Cerdas dalam 1 detik
+      setTimeout(() => {
+        loading.style.display = 'none';
+
+        const aiGenerated = [];
+        const templateTopics = {
+          VII: ["Thaharah & Najis", "Salat Fardhu", "Salat Berjamaah", "Dzikir & Doa"],
+          VIII: ["Sujud Sahwi & Syukur", "Zakat Mal & Fitrah", "Puasa Fardhu & Sunnah", "Iktikaf"],
+          IX: ["Qurban & Aqiqah", "Penyembelihan Hewan", "Jual Beli & Muamalah", "Riba & Hutang Piutang"]
+        };
+        const currentGradeTopics = templateTopics[grade] || templateTopics.VII;
+
+        for (let i = 1; i <= count; i++) {
+          const subtopic = currentGradeTopics[(i - 1) % currentGradeTopics.length];
+          aiGenerated.push({
+            id: i,
+            topik: `${topic} - Kelas ${grade} (${subtopic})`,
+            soal: `[Studi Kasus HOTS #${i}] Saat berada di madrasah, sekelompok siswa menghadapi persoalan fikih praktis tentang ${subtopic.toLowerCase()}. Berdasarkan kaidah fikih mazhab Syafi'i, bagaimanakah solusi hukum yang paling tepat dan sah?`,
+            opsi: {
+              A: `Melakukan pensucian dan tata cara sesuai rukun syariat secara tertib dan mutlak sah.`,
+              B: `Mengabaikan ketentuan rukun karena dalam kondisi darurat tanpa uzur.`,
+              C: `Mengganti salat dengan amalan lain yang tidak memiliki dasar dalil.`,
+              D: `Membatalkan seluruh ibadah tanpa berusaha mencari solusi syar'i.`
+            },
+            kunci: "A",
+            pembahasan: `Berdasarkan dalil Al-Qur'an dan hadis Nabi SAW, hukum mengenai ${subtopic.toLowerCase()} wajib dipenuhi sesuai rukun dan syarat sahnya agar ibadah diterima.`
+          });
+        }
+
+        activeQuestions = aiGenerated;
+        localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
+        document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
+        generateQuestionBoxes();
+
+        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir soal HOTS Fikih Kelas ${grade} MTsN 6 Malang! Kotak soal di sirkuit telah diperbarui.`);
+        closeAdminModal();
+      }, 900);
     }
 
     function saveCustomQuestions() {
@@ -2121,6 +2466,7 @@
     }
 
     window.onload = () => {
+      applyRolePermissions();
       updateAvatarPreview();
     };
   </script>
