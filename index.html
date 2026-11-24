@@ -713,6 +713,9 @@
     <button class="icon-btn teacher-only" id="btnAdmin" onclick="openAdminModal()">
       ⚙️ Bank Soal & AI (Guru)
     </button>
+    <button class="icon-btn teacher-only" id="btnDownloadHeader" onclick="exportScoresCSV()">
+      📥 Download Nilai (Excel)
+    </button>
 
     <!-- BADGE TAMPILAN SISWA -->
     <div class="role-badge" id="studentRoleBadge" style="display:none;">
@@ -750,15 +753,13 @@
             <input type="text" id="inputName" value="Ahmad Fauzi" placeholder="Masukkan namamu..." oninput="updateAvatarPreview()">
           </div>
           <div class="input-group">
-            <label>Tingkat / Kelas</label>
-            <select id="inputClass" onchange="updateAvatarPreview()">
-              <option value="VII-A MTsN 6 Malang">Kelas VII-A</option>
-              <option value="VII-B MTsN 6 Malang">Kelas VII-B</option>
-              <option value="VII-C MTsN 6 Malang">Kelas VII-C</option>
-              <option value="VIII-A MTsN 6 Malang">Kelas VIII-A</option>
-              <option value="VIII-B MTsN 6 Malang">Kelas VIII-B</option>
-              <option value="IX-A MTsN 6 Malang">Kelas IX-A</option>
-            </select>
+            <label>Jenjang Kelas (Pilih Salah Satu)</label>
+            <div class="option-pills" id="groupStudentClass">
+              <button type="button" class="pill-btn active" onclick="setStudentClass('Kelas VII MTsN 6 Malang', this)">🏫 Kelas 7</button>
+              <button type="button" class="pill-btn" onclick="setStudentClass('Kelas VIII MTsN 6 Malang', this)">🏫 Kelas 8</button>
+              <button type="button" class="pill-btn" onclick="setStudentClass('Kelas IX MTsN 6 Malang', this)">🏫 Kelas 9</button>
+            </div>
+            <input type="hidden" id="inputClass" value="Kelas VII MTsN 6 Malang">
           </div>
         </div>
 
@@ -949,6 +950,18 @@
         <button class="pill-btn" style="background:linear-gradient(135deg, #00e5ff, #00b0ff); color:#000; font-weight:bold; padding:12px 20px; font-size:14px; align-self:flex-end;" onclick="submitEssayAnswer()">📝 Serahkan Jawaban Uraian</button>
       </div>
 
+      <!-- TIPE 4: SOAL CERITA DESKRIPTIF (UNTUK DIJELASKAN GURU) -->
+      <div id="modalDeskriptifContainer" style="display:none; flex-direction:column; gap:12px;">
+        <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(0,230,118,0.3); border-radius:14px; padding:12px 16px;">
+          <label style="font-size:11px; font-weight:800; color:#00e5ff; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; display:block;">✍️ Respon / Analisis Siswa terhadap Kasus di Atas:</label>
+          <textarea id="inputDeskriptifAnswer" rows="2" placeholder="Tuliskan pendapat / analisismu mengenai kasus syar'i di atas..." style="width:100%; background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.25); border-radius:10px; padding:10px 14px; color:#fff; font-size:13px; outline:none; resize:none;"></textarea>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span style="font-size:12px; color:#ffd600;">👨‍🏫 Setelah respon dikirim, poin pembahasan syar'i akan dijelaskan oleh guru di depan kelas!</span>
+          <button class="pill-btn" style="background:linear-gradient(135deg, #00e676, #00b0ff); color:#000; font-weight:bold; padding:10px 20px; font-size:14px;" onclick="submitDeskriptifAnswer()">🚀 Kirim Respon & Buka Penjelasan Guru</button>
+        </div>
+      </div>
+
       <div class="q-feedback" id="modalFeedback"></div>
     </div>
   </div>
@@ -975,21 +988,29 @@
         </p>
         
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+          <!-- 1. JENJANG KELAS: 3 PILIHAN JAWABAN (KLIK SALAH SATU SAJA) -->
           <div class="input-group">
-            <label>1. Jenjang Kelas</label>
-            <select id="aiGradeSelect">
-              <option value="VII">Kelas 7 (Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa)</option>
-              <option value="VIII">Kelas 8 (Sujud Sahwi/Syukur, Puasa Fardhu/Sunnah, Zakat, Iktikaf)</option>
-              <option value="IX">Kelas 9 (Qurban, Aqiqah, Jual Beli, Pinjam Meminjam, Muamalah)</option>
-            </select>
+            <label>1. Jenjang Kelas (Pilih Salah Satu)</label>
+            <div class="option-pills" id="groupAiGrade" style="margin-top:2px;">
+              <button type="button" class="pill-btn active" onclick="setAiGrade('VII', this)">🏫 Kelas 7</button>
+              <button type="button" class="pill-btn" onclick="setAiGrade('VIII', this)">🏫 Kelas 8</button>
+              <button type="button" class="pill-btn" onclick="setAiGrade('IX', this)">🏫 Kelas 9</button>
+            </div>
+            <input type="hidden" id="aiGradeSelect" value="VII">
+            <span id="aiGradeHint" style="font-size:11px; color:#a7f3d0; margin-top:4px; display:block;">Materi: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa</span>
           </div>
+
+          <!-- 2. BENTUK SOAL: DIBUAT DESKRIPTIF SAJA SUPAYA DIJELASKAN GURU -->
           <div class="input-group">
             <label>2. Bentuk Soal</label>
-            <select id="aiQuestionTypeSelect">
-              <option value="PG">Pilihan Ganda (4 Opsi: A, B, C, D)</option>
-              <option value="ISIAN">Isian Singkat (Mengetik Istilah Fikih)</option>
-              <option value="URAIAN">Uraian Panjang (Analisis Kasus & Syariat)</option>
-            </select>
+            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(0,230,118,0.4); border-radius:10px; padding:9px 12px; display:flex; align-items:center; gap:10px;">
+              <span style="font-size:22px;">📜</span>
+              <div>
+                <strong style="color:var(--primary); font-size:12px;">Soal Cerita Deskriptif (Studi Kasus)</strong>
+                <p style="font-size:10px; color:#cbd5e1; margin-top:2px;">Soal disusun dalam bentuk cerita studi kasus, memuat panduan penjelasan syar'i untuk diterangkan guru.</p>
+              </div>
+            </div>
+            <input type="hidden" id="aiQuestionTypeSelect" value="DESKRIPTIF">
           </div>
         </div>
 
@@ -1008,7 +1029,10 @@
           <button class="btn-start-race" style="background:linear-gradient(135deg, #a855f7, #6366f1); color:white; padding:12px 24px; font-size:14px;" onclick="generateQuestionsWithAI()">
             ✨ Generate Soal Sesuai Deskripsi AI Sekarang!
           </button>
-          <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset ke 40 Soal SAS Asli</button>
+          <div style="display:flex; gap:8px;">
+            <button class="pill-btn" style="background:var(--cyber-blue); color:#000; font-weight:bold;" onclick="exportScoresCSV()">📥 Download Nilai (Excel)</button>
+            <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset Soal SAS</button>
+          </div>
         </div>
         <span id="aiLoadingStatus" style="font-size:12px; color:#ffd600; display:none; margin-top:6px;">⏳ AI sedang merancang studi kasus, skenario, kunci, dan pembahasan...</span>
       </div>
@@ -1532,6 +1556,26 @@
       document.querySelectorAll('#groupKartColor .swatch').forEach(s => s.classList.remove('active'));
       if (swatchEl) swatchEl.classList.add('active');
       updateAvatarPreview();
+    }
+
+    function setStudentClass(clsName, btnEl) {
+      document.getElementById('inputClass').value = clsName;
+      document.querySelectorAll('#groupStudentClass .pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      updateAvatarPreview();
+    }
+
+    function setAiGrade(grade, btnEl) {
+      document.getElementById('aiGradeSelect').value = grade;
+      document.querySelectorAll('#groupAiGrade .pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      const hints = {
+        VII: "Materi: Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa",
+        VIII: "Materi: Sujud Sahwi/Syukur, Puasa Fardhu/Sunnah, Zakat, Iktikaf",
+        IX: "Materi: Qurban, Aqiqah, Jual Beli, Pinjam Meminjam, Muamalah"
+      };
+      const hintEl = document.getElementById('aiGradeHint');
+      if (hintEl) hintEl.innerText = hints[grade] || "";
     }
 
     function updateAvatarPreview() {
@@ -2304,12 +2348,27 @@
       const gridPG = document.getElementById('modalOptionsGrid');
       const boxShort = document.getElementById('modalShortAnswerContainer');
       const boxEssay = document.getElementById('modalEssayContainer');
+      const boxDeskriptif = document.getElementById('modalDeskriptifContainer');
 
-      if (qType === 'ISIAN') {
+      if (qType === 'DESKRIPTIF') {
+        typeBadge.innerText = 'SOAL CERITA DESKRIPTIF';
+        typeBadge.style.color = '#00e676';
+        typeBadge.style.borderColor = '#00e676';
+        gridPG.style.display = 'none';
+        boxShort.style.display = 'none';
+        boxEssay.style.display = 'none';
+        boxDeskriptif.style.display = 'flex';
+
+        const area = document.getElementById('inputDeskriptifAnswer');
+        area.value = '';
+        area.disabled = false;
+        setTimeout(() => area.focus(), 150);
+      } else if (qType === 'ISIAN') {
         typeBadge.innerText = 'ISIAN SINGKAT';
         typeBadge.style.color = '#ffd600';
         typeBadge.style.borderColor = '#ffd600';
         gridPG.style.display = 'none';
+        boxDeskriptif.style.display = 'none';
         boxEssay.style.display = 'none';
         boxShort.style.display = 'flex';
         
@@ -2322,6 +2381,7 @@
         typeBadge.style.color = '#00e5ff';
         typeBadge.style.borderColor = '#00e5ff';
         gridPG.style.display = 'none';
+        boxDeskriptif.style.display = 'none';
         boxShort.style.display = 'none';
         boxEssay.style.display = 'flex';
 
@@ -2333,6 +2393,7 @@
         typeBadge.innerText = 'PILIHAN GANDA';
         typeBadge.style.color = '#00e676';
         typeBadge.style.borderColor = '#00e676';
+        boxDeskriptif.style.display = 'none';
         boxShort.style.display = 'none';
         boxEssay.style.display = 'none';
         gridPG.style.display = 'grid';
@@ -2398,6 +2459,55 @@
           showFinalPodium();
         }
       }, 3000);
+    }
+
+    function submitDeskriptifAnswer() {
+      if (!currentBox) return;
+      const areaEl = document.getElementById('inputDeskriptifAnswer');
+      const soal = currentBox.soal;
+      const points = 100 / activeQuestions.length;
+
+      const feedback = document.getElementById('modalFeedback');
+      feedback.style.display = 'block';
+      if (areaEl) areaEl.disabled = true;
+
+      Sound.playCorrectSound();
+      feedback.className = 'q-feedback correct';
+      feedback.innerHTML = `
+        <div style="background:rgba(0, 230, 118, 0.12); border:1px solid #00e676; border-radius:12px; padding:14px 18px; margin-top:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; flex-wrap:wrap; gap:8px;">
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:22px;">👨‍🏫</span>
+              <strong style="color:#00e676; font-size:15px;">PENJELASAN GURU & PEMBAHASAN SYAR'I (MTsN 6 MALANG):</strong>
+            </div>
+            <span style="background:var(--primary); color:#000; font-weight:900; font-size:11px; padding:3px 8px; border-radius:8px;">+${points.toFixed(1)} POIN & NITRO!</span>
+          </div>
+          <div style="font-size:13.5px; line-height:1.6; color:#f8fafc; white-space:pre-line;">
+${soal.pembahasan}
+          </div>
+          <div style="margin-top:14px; text-align:right;">
+            <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold; padding:8px 18px;" onclick="closeQuestionModalAfterExplanation()">⏩ Lanjutkan Balapan</button>
+          </div>
+        </div>
+      `;
+
+      playerCar.score += points;
+      playerCar.score = Math.min(100, Math.round(playerCar.score * 10) / 10);
+      playerCar.isBoosting = true;
+      playerCar.speed = playerCar.boostSpeed;
+      triggerEventBanner(`👨‍🏫 ${playerConfig.name} menyelesaikan telaah kasus Kotak #${currentBox.id}! Guru menerangkan penjelasan.`);
+
+      currentBox.collected = true;
+      playerCar.answeredCount++;
+      updateLeaderboard();
+    }
+
+    function closeQuestionModalAfterExplanation() {
+      document.getElementById('questionModal').style.display = 'none';
+      playerCar.isBoosting = false;
+      if (playerCar.answeredCount >= activeQuestions.length) {
+        showFinalPodium();
+      }
     }
 
     function submitShortAnswer() {
@@ -2879,48 +2989,21 @@
           const item = syllabus[(i - 1) % syllabus.length];
           const questionId = i;
 
-          if (qType === "ISIAN") {
-            aiGenerated.push({
-              id: questionId,
-              tipe: "ISIAN",
-              topik: `Fikih Kelas ${grade} - ${item.topic}`,
-              soal: `${promptNote}Pada kegiatan madrasah, siswa mempelajari kasus: "${item.case}". Istilah atau hukum fikih yang tepat untuk menjawab ketentuan tersebut adalah ....`,
-              kunci: item.kw,
-              pembahasan: `Ketentuan syar'i mengenai ${item.case.toLowerCase()} dinamakan atau berhubungan dengan "${item.kw}" sesuai dalil mazhab Syafi'i.`
-            });
-          } else if (qType === "URAIAN") {
-            aiGenerated.push({
-              id: questionId,
-              tipe: "URAIAN",
-              topik: `Fikih Kelas ${grade} - ${item.topic}`,
-              soal: `${promptNote}Analisis Kasus Nyata: Siswa MTsN 6 Malang menjumpai peristiwa: "${item.case}". Bagaimanakah rincian hukum syar'i, syarat sah, serta solusi praktis penyelesaiannya menurut kaidah fikih Islam? Jelaskan secara runtut!`,
-              kunci: item.kw,
-              pembahasan: `Pedoman Jawaban Uraian Syar'i:\n1. Status Hukum: Sah jika rukun dan syarat terpenuhi.\n2. Kaidah Fikih: Mengacu pada materi ${item.topic} (${item.kw}).\n3. Langkah Solusi: Melaksanakan tata cara ibadah secara tertib dan menghindari hal-hal yang membatalkan.`
-            });
-          } else {
-            // PILIHAN GANDA
-            aiGenerated.push({
-              id: questionId,
-              tipe: "PG",
-              topik: `Fikih Kelas ${grade} - ${item.topic}`,
-              soal: `${promptNote}Ketika berada di madrasah, sekelompok siswa berdiskusi mengenai: "${item.case}". Berdasarkan hukum fikih mazhab Syafi'i, tindakan yang paling tepat adalah ....`,
-              opsi: {
-                A: `Melaksanakan ketentuan ibadah sesuai rukun syariat terkait ${item.kw} secara sah dan tertib.`,
-                B: `Mengabaikan ketentuan rukun fikih karena menganggapnya sebagai hal sepele.`,
-                C: `Mengganti tata cara syariat dengan kebiasaan tanpa dasar dalil yang jelas.`,
-                D: `Membatalkan seluruh ibadah tanpa berusaha mencari solusi syar'i yang diperbolehkan.`
-              },
-              kunci: "A",
-              pembahasan: `Berdasarkan ketentuan hukum fikih Islam, kasus "${item.case.toLowerCase()}" diselesaikan dengan mengamalkan "${item.kw}" sesuai rukun dan syarat sah syariat.`
-            });
-          }
+          aiGenerated.push({
+            id: questionId,
+            tipe: "DESKRIPTIF",
+            topik: `Fikih Kelas ${grade} - ${item.topic}`,
+            soal: `${promptNote}Studi Kasus Deskriptif: Di madrasah, siswa mengamati kejadian: "${item.case}". Bagaimana pandangan dan penalaran syar'i mengenai hukum kasus ini sesuai ketentuan mazhab Syafi'i? Tuliskan responmu di bawah ini untuk disimak dan dijelaskan oleh guru!`,
+            kunci: item.kw,
+            pembahasan: `📖 KASUS NYATA: "${item.case}"\n⚖️ HUKUM SYAR'I (MAZHAB SYAFI'I): Sah/Wajib dipenuhi sesuai ketentuan rukun "${item.kw}".\n👨‍🏫 POIN PENJELASAN GURU DI KELAS:\n1. Menguraikan dalil Al-Qur'an / Hadis yang mendasari materi ${item.topic}.\n2. Menjelaskan rukun dan syarat sah agar amalan siswa sah secara syariat.\n3. Membimbing siswa menyimpulkan adab dan solusi hukum sehari-hari.`
+          });
         }
 
         activeQuestions = aiGenerated;
         localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
         generateQuestionBoxes();
 
-        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir soal ${qType === 'ISIAN' ? 'Isian Singkat' : qType === 'URAIAN' ? 'Uraian Panjang' : 'Pilihan Ganda'} Fikih Kelas ${grade} MTsN 6 Malang sesuai deskripsi Anda! Kotak soal di sirkuit telah siap ditelusuri.`);
+        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir Soal Cerita Deskriptif Fikih Kelas ${grade} MTsN 6 Malang sesuai deskripsi Anda! Soal siap ditelusuri di sirkuit dan dijelaskan oleh guru.`);
         closeAdminModal();
       }, 800);
     }
@@ -2952,7 +3035,7 @@
     }
 
     /* =========================================================
-       PODIUM AKHIR & EXPORT CSV
+       PODIUM AKHIR & EXPORT CSV (DOWNLOAD HASIL NILAI SISWA UNTUK GURU)
        ========================================================= */
     function showFinalPodium() {
       Sound.fanfare();
@@ -2990,25 +3073,40 @@
       document.getElementById('finalPodiumModal').style.display = 'flex';
     }
 
+    // FITUR DOWNLOAD REKAP NILAI SISWA DALAM FORMAT EXCEL / CSV UNTUK GURU
     function exportScoresCSV() {
       const all = [
         { name: playerConfig.name, class: playerConfig.className, score: playerCar.score, count: playerCar.answeredCount },
         ...peerRacers.map(p => ({ name: p.name, class: playerConfig.className, score: p.score, count: activeQuestions.length }))
       ].sort((a, b) => b.score - a.score);
 
-      let csv = "data:text/csv;charset=utf-8,Peringkat,Nama Siswa,Kelas,Kotak Terjawab,Skor Akhir (0-100),Status\n";
+      // Menggunakan UTF-8 BOM (\uFEFF) dan pemisah titik koma agar otomatis terbuka rapi di Excel Windows
+      let csvContent = "\uFEFF";
+      csvContent += "REKAPITULASI HASIL NILAI SISWA GAME FIKIH GRAND PRIX MTsN 6 MALANG\n";
+      csvContent += `Waktu Unduh;${new Date().toLocaleDateString('id-ID')} ${new Date().toLocaleTimeString('id-ID')}\n`;
+      csvContent += `Jenjang / Kelas;${playerConfig.className}\n`;
+      csvContent += `Jumlah Butir Soal;${activeQuestions.length} Butir Soal\n\n`;
+      csvContent += "Peringkat;Nama Siswa;Kelas;Kotak Dijawab;Skor Akhir (0-100);Predikat;Status\n";
+
       all.forEach((r, i) => {
-        const status = r.score >= 75 ? "TUNTAS" : "REMIDI";
-        csv += `${i + 1},"${r.name}","${r.class}",${r.count},${r.score.toFixed(1)},${status}\n`;
+        const isTuntas = r.score >= 75;
+        const status = isTuntas ? "TUNTAS" : "REMIDI";
+        const predikat = r.score >= 90 ? "A (Amat Baik)" : r.score >= 80 ? "B (Baik)" : r.score >= 75 ? "C (Cukup)" : "D (Perlu Bimbingan)";
+        csvContent += `${i + 1};"${r.name}";"${r.class}";${r.count} / ${activeQuestions.length};${r.score.toFixed(1)};${predikat};${status}\n`;
       });
 
-      const uri = encodeURI(csv);
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.setAttribute("href", uri);
-      link.setAttribute("download", `Nilai_PixarGP_Fikih_${playerConfig.className.replace(/\s+/g, '_')}.csv`);
+      const cleanClassName = (playerConfig.className || 'MTsN6Malang').replace(/[^a-zA-Z0-9]/g, '_');
+      link.setAttribute("href", url);
+      link.setAttribute("download", `Rekap_Nilai_Fikih_${cleanClassName}_${new Date().toISOString().slice(0,10)}.csv`);
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert(`✅ Rekap nilai ${all.length} siswa berhasil didownload dalam format Excel (CSV)!`);
     }
 
     window.onload = () => {
