@@ -502,6 +502,16 @@
       border-radius: 12px;
       letter-spacing: 1px;
     }
+    .q-type-badge {
+      background: rgba(0, 229, 255, 0.15);
+      border: 1px solid var(--cyber-blue);
+      color: var(--cyber-blue);
+      font-weight: 800;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 10px;
+      letter-spacing: 0.5px;
+    }
     .q-text {
       font-size: 17px;
       line-height: 1.5;
@@ -755,47 +765,47 @@
         <!-- PILIHAN TEMA VISUAL TEMPAT / LINGKUNGAN SIRKUIT (KHUSUS SISWA DI HP MASING-MASING) -->
         <div class="input-group">
           <label>Pilih Tema Visual Sirkuit (Pemandangan di HP-mu)</label>
-          <div class="option-pills">
-            <button class="pill-btn active" onclick="setTrackTheme('cyber_malang')">🏛️ Sirkuit Cyber MTsN 6</button>
-            <button class="pill-btn" onclick="setTrackTheme('bromo_desert')">🏜️ Gurun Pasir Bromo</button>
-            <button class="pill-btn" onclick="setTrackTheme('coban_waterfall')">🌲 Hutan Air Terjun Coban</button>
-            <button class="pill-btn" onclick="setTrackTheme('tokyo_neon')">🌃 Kota Malam Neon</button>
+          <div class="option-pills" id="groupTrackTheme">
+            <button class="pill-btn active" onclick="setTrackTheme('cyber_malang', this)">🏛️ Sirkuit Cyber MTsN 6</button>
+            <button class="pill-btn" onclick="setTrackTheme('bromo_desert', this)">🏜️ Gurun Pasir Bromo</button>
+            <button class="pill-btn" onclick="setTrackTheme('coban_waterfall', this)">🌲 Hutan Air Terjun Coban</button>
+            <button class="pill-btn" onclick="setTrackTheme('tokyo_neon', this)">🌃 Kota Malam Neon</button>
           </div>
         </div>
 
         <!-- PILIHAN MODEL MOBIL BALAP KARTUN PIXAR -->
         <div class="input-group">
           <label>Pilih Model Mobil Balap Kartun Pixar</label>
-          <div class="option-pills">
-            <button class="pill-btn active" onclick="setCarModel('mcqueen_speed')">⚡ Lightning McQueen</button>
-            <button class="pill-btn" onclick="setCarModel('beetle_cute')">🐞 Kodok Gemoy Toon</button>
-            <button class="pill-btn" onclick="setCarModel('formula_pixar')">🏎️ Pixar Formula Racer</button>
-            <button class="pill-btn" onclick="setCarModel('mini_truck')">🚚 Mini Truck Monster</button>
+          <div class="option-pills" id="groupCarModel">
+            <button class="pill-btn active" onclick="setCarModel('mcqueen_speed', this)">⚡ Lightning McQueen</button>
+            <button class="pill-btn" onclick="setCarModel('beetle_cute', this)">🐞 Kodok Gemoy Toon</button>
+            <button class="pill-btn" onclick="setCarModel('formula_pixar', this)">🏎️ Pixar Formula Racer</button>
+            <button class="pill-btn" onclick="setCarModel('mini_truck', this)">🚚 Mini Truck Monster</button>
           </div>
         </div>
 
         <!-- AKSESORIS KEPALA / ATAP MOBIL -->
         <div class="input-group">
           <label>Aksesoris Atap Mobil / Karakter</label>
-          <div class="option-pills">
-            <button class="pill-btn active" onclick="setHeadwear('peci_hitam')">👳 Peci Hitam MTs</button>
-            <button class="pill-btn" onclick="setHeadwear('peci_putih')">👳 Peci Putih Santri</button>
-            <button class="pill-btn" onclick="setHeadwear('hijab_tosca')">🧕 Pita Hijab Manis</button>
-            <button class="pill-btn" onclick="setHeadwear('helm_balap')">🏎️ Spoiler Balap Keren</button>
-            <button class="pill-btn" onclick="setHeadwear('kacamata_keren')">🕶️ Kacamata Hitam Sporty</button>
+          <div class="option-pills" id="groupHeadwear">
+            <button class="pill-btn active" onclick="setHeadwear('peci_hitam', this)">👳 Peci Hitam MTs</button>
+            <button class="pill-btn" onclick="setHeadwear('peci_putih', this)">👳 Peci Putih Santri</button>
+            <button class="pill-btn" onclick="setHeadwear('hijab_tosca', this)">🧕 Pita Hijab Manis</button>
+            <button class="pill-btn" onclick="setHeadwear('helm_balap', this)">🏎️ Spoiler Balap Keren</button>
+            <button class="pill-btn" onclick="setHeadwear('kacamata_keren', this)">🕶️ Kacamata Hitam Sporty</button>
           </div>
         </div>
 
         <!-- WARNA MOBIL KARTUN VIBRANT -->
         <div class="input-group">
           <label>Warna Cat Mobil (Glossy Pixar)</label>
-          <div class="color-swatches">
-            <div class="swatch active" style="background:#ff1744;" onclick="setKartColor('#ff1744')"></div>
-            <div class="swatch" style="background:#00e676;" onclick="setKartColor('#00e676')"></div>
-            <div class="swatch" style="background:#00e5ff;" onclick="setKartColor('#00e5ff')"></div>
-            <div class="swatch" style="background:#ffd600;" onclick="setKartColor('#ffd600')"></div>
-            <div class="swatch" style="background:#d500f9;" onclick="setKartColor('#d500f9')"></div>
-            <div class="swatch" style="background:#ff9100;" onclick="setKartColor('#ff9100')"></div>
+          <div class="color-swatches" id="groupKartColor">
+            <div class="swatch active" style="background:#ff1744;" onclick="setKartColor('#ff1744', this)"></div>
+            <div class="swatch" style="background:#00e676;" onclick="setKartColor('#00e676', this)"></div>
+            <div class="swatch" style="background:#00e5ff;" onclick="setKartColor('#00e5ff', this)"></div>
+            <div class="swatch" style="background:#ffd600;" onclick="setKartColor('#ffd600', this)"></div>
+            <div class="swatch" style="background:#d500f9;" onclick="setKartColor('#d500f9', this)"></div>
+            <div class="swatch" style="background:#ff9100;" onclick="setKartColor('#ff9100', this)"></div>
           </div>
         </div>
 
@@ -864,20 +874,48 @@
     </div>
   </div>
 
-  <!-- MODAL KOTAK SOAL MISTERI -->
+  <!-- SCREEN OVERLAY: AVATAR PEMANDU MEMBAWA BENDERA "START" & HITUNGAN 3, 2, 1, MULAI -->
+  <div id="startCountdownOverlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; z-index:150; background:radial-gradient(circle at center, rgba(13,20,36,0.96) 0%, rgba(3,7,18,0.99) 100%); flex-direction:column; align-items:center; justify-content:center; backdrop-filter:blur(14px);">
+    <div style="position:relative; display:flex; flex-direction:column; align-items:center;">
+      
+      <!-- AVATAR MASCOT CANVAS PEMANDU BENDERA START -->
+      <canvas id="mascotStartCanvas" width="280" height="260"></canvas>
+      
+      <!-- LAMPU TRAFFIC LIGHT RACING START (MERAH, KUNING, HIJAU) -->
+      <div style="display:flex; gap:18px; margin-top:4px; background:rgba(0,0,0,0.65); padding:10px 24px; border-radius:30px; border:2px solid rgba(255,255,255,0.2); box-shadow:0 6px 25px rgba(0,0,0,0.8);">
+        <div id="lightRed" style="width:28px; height:28px; border-radius:50%; background:#331111; border:2px solid #ff1744; transition:all 0.25s;"></div>
+        <div id="lightYellow" style="width:28px; height:28px; border-radius:50%; background:#332900; border:2px solid #ffd600; transition:all 0.25s;"></div>
+        <div id="lightGreen" style="width:28px; height:28px; border-radius:50%; background:#052e16; border:2px solid #00e676; transition:all 0.25s;"></div>
+      </div>
+
+      <!-- ANGKA HITUNGAN BESAR 3, 2, 1, MULAI -->
+      <div id="countdownNumberText" style="font-size:72px; font-weight:900; color:#ffd600; text-shadow:0 0 35px rgba(255,214,0,0.8); margin-top:8px; letter-spacing:2px;">
+        BERSIAP!
+      </div>
+      <div id="countdownSubText" style="font-size:15px; color:#cbd5e1; font-weight:700; margin-top:4px; text-shadow:0 2px 10px rgba(0,0,0,0.8);">
+        Pemandu balap mengibarkan bendera start MTsN 6 Malang!
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL KOTAK SOAL MISTERI (MENDUKUNG PILIHAN GANDA, ISIAN SINGKAT & URAIAN PANJANG) -->
   <div id="questionModal">
     <div class="question-card">
       <div class="q-badge-row">
         <div class="q-mystery-tag">
           <span>📦 KOTAK SOAL MISTERI #<span id="modalQuestionNum">1</span></span>
         </div>
-        <span style="font-size: 12px; color: #94a3b8;" id="modalTopic">FIKIH KELAS VII</span>
+        <div style="display:flex; gap:8px; align-items:center;">
+          <span class="q-type-badge" id="modalTypeBadge">PILIHAN GANDA</span>
+          <span style="font-size: 12px; color: #94a3b8;" id="modalTopic">FIKIH KELAS VII</span>
+        </div>
       </div>
       
       <div class="q-text" id="modalQuestionText">
         Pertanyaan sedang dimuat...
       </div>
 
+      <!-- TIPE 1: PILIHAN GANDA (4 OPSI) -->
       <div class="q-options-grid" id="modalOptionsGrid">
         <button class="q-btn" onclick="submitAnswer('A')">
           <span class="q-key">A</span>
@@ -897,6 +935,20 @@
         </button>
       </div>
 
+      <!-- TIPE 2: ISIAN SINGKAT -->
+      <div id="modalShortAnswerContainer" style="display:none; flex-direction:column; gap:10px;">
+        <div style="display:flex; gap:10px;">
+          <input type="text" id="inputShortAnswer" placeholder="Ketik kata/istilah jawabanmu di sini..." style="flex:1; background:rgba(255,255,255,0.08); border:2px solid var(--primary); border-radius:12px; padding:12px 16px; color:#fff; font-size:15px; outline:none;" onkeydown="if(event.key==='Enter') submitShortAnswer()">
+          <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold; padding:12px 20px; font-size:14px;" onclick="submitShortAnswer()">🚀 Kirim Jawaban</button>
+        </div>
+      </div>
+
+      <!-- TIPE 3: URAIAN PANJANG -->
+      <div id="modalEssayContainer" style="display:none; flex-direction:column; gap:10px;">
+        <textarea id="inputEssayAnswer" rows="3" placeholder="Tuliskan analisis penjelasan hukum dan dalil syar'i jawabanmu secara lengkap..." style="width:100%; background:rgba(255,255,255,0.08); border:2px solid var(--cyber-blue); border-radius:12px; padding:12px 16px; color:#fff; font-size:14px; outline:none; resize:none;"></textarea>
+        <button class="pill-btn" style="background:linear-gradient(135deg, #00e5ff, #00b0ff); color:#000; font-weight:bold; padding:12px 20px; font-size:14px; align-self:flex-end;" onclick="submitEssayAnswer()">📝 Serahkan Jawaban Uraian</button>
+      </div>
+
       <div class="q-feedback" id="modalFeedback"></div>
     </div>
   </div>
@@ -914,52 +966,51 @@
       <div class="admin-tab-buttons">
         <button class="admin-tab-btn active" onclick="switchAdminTab('tabAI')">✨ Buat Soal Otomatis (AI Canggih)</button>
         <button class="admin-tab-btn" onclick="switchAdminTab('tabUpload')">📁 Upload File (File Explorer)</button>
-        <button class="admin-tab-btn" onclick="switchAdminTab('tabJson')">📝 Editor JSON Manual</button>
       </div>
 
       <!-- TAB 1: GENERATOR SOAL BERBASIS AI CANGGIH -->
       <div class="admin-tab-content active" id="tabAI">
         <p style="font-size: 13px; color: #94a3b8;">
-          Gunakan kecanggihan AI untuk membuat soal HOTS model cerita otomatis sesuai silabus kurikulum MTsN 6 Malang:
+          Gunakan kecanggihan AI untuk merancang bank soal HOTS Fikih MTsN 6 Malang. Isi kriteria wajib di bawah ini, lalu Anda bebas berkreasi mendeskripsikan skenario / studi kasus yang diinginkan:
         </p>
         
         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
           <div class="input-group">
-            <label>Tingkat Kelas</label>
+            <label>1. Jenjang Kelas</label>
             <select id="aiGradeSelect">
-              <option value="VII">Kelas VII (Thaharah, Salat Fardhu, Berjamaah, Dzikir)</option>
-              <option value="VIII">Kelas VIII (Sujud Sahwi, Tilawah, Syukur, Puasa, Zakat)</option>
-              <option value="IX">Kelas IX (Penyembelihan, Qurban, Aqiqah, Jual Beli, Pinjam Meminjam)</option>
+              <option value="VII">Kelas 7 (Thaharah, Salat Fardhu, Berjamaah, Dzikir & Doa)</option>
+              <option value="VIII">Kelas 8 (Sujud Sahwi/Syukur, Puasa Fardhu/Sunnah, Zakat, Iktikaf)</option>
+              <option value="IX">Kelas 9 (Qurban, Aqiqah, Jual Beli, Pinjam Meminjam, Muamalah)</option>
             </select>
           </div>
           <div class="input-group">
-            <label>Materi / Topik Pembahasan</label>
-            <input type="text" id="aiTopicInput" value="Fikih Ibadah & Muamalah" placeholder="Ketik topik materi...">
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
-          <div class="input-group">
-            <label>Jumlah Soal yang Digenerate</label>
-            <select id="aiCountSelect">
-              <option value="40">40 Soal Penuh (100 Poin)</option>
-              <option value="20">20 Soal Cepat</option>
-              <option value="10">10 Soal Kuis Singkat</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>Model Soal</label>
-            <select id="aiModelSelect">
-              <option value="HOTS_STORY">HOTS Model Cerita / Studi Kasus Nyata</option>
-              <option value="ANALYSIS">Analisis Hukum & Dalil Syar'i</option>
+            <label>2. Bentuk Soal</label>
+            <select id="aiQuestionTypeSelect">
+              <option value="PG">Pilihan Ganda (4 Opsi: A, B, C, D)</option>
+              <option value="ISIAN">Isian Singkat (Mengetik Istilah Fikih)</option>
+              <option value="URAIAN">Uraian Panjang (Analisis Kasus & Syariat)</option>
             </select>
           </div>
         </div>
 
-        <button class="btn-start-race" style="margin-top:10px; background:linear-gradient(135deg, #a855f7, #6366f1); color:white;" onclick="generateQuestionsWithAI()">
-          ✨ Generate Soal HOTS Otomatis Sekarang!
-        </button>
-        <span id="aiLoadingStatus" style="font-size:12px; color:#ffd600; display:none;">⏳ AI sedang merancang studi kasus dan pembahasan soal...</span>
+        <div style="display:grid; grid-template-columns: 140px 1fr; gap:12px; margin-top:4px;">
+          <div class="input-group">
+            <label>3. Jumlah Soal</label>
+            <input type="number" id="aiCountInput" value="40" min="1" max="100" style="font-size:15px; font-weight:bold; color:#ffd600;">
+          </div>
+          <div class="input-group">
+            <label>4. Deskripsi Keinginan Soal Guru (Prompt Kreatif Bebas)</label>
+            <textarea id="aiCustomPrompt" rows="3" style="width:100%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:10px; padding:10px 14px; color:#f8fafc; font-size:13px; outline:none; resize:none;" placeholder="Contoh: Buatkan studi kasus siswa MTsN 6 Malang yang sedang berkemah di Coban Rondo, menghadapi masalah air sungai untuk bersuci, salat jamak qashar saat perjalanan, dan transaksi jual beli di kantin madrasah..."></textarea>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; flex-wrap:wrap; gap:10px;">
+          <button class="btn-start-race" style="background:linear-gradient(135deg, #a855f7, #6366f1); color:white; padding:12px 24px; font-size:14px;" onclick="generateQuestionsWithAI()">
+            ✨ Generate Soal Sesuai Deskripsi AI Sekarang!
+          </button>
+          <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset ke 40 Soal SAS Asli</button>
+        </div>
+        <span id="aiLoadingStatus" style="font-size:12px; color:#ffd600; display:none; margin-top:6px;">⏳ AI sedang merancang studi kasus, skenario, kunci, dan pembahasan...</span>
       </div>
 
       <!-- TAB 2: UPLOAD FILE DARI FILE EXPLORER LAPTOP -->
@@ -973,18 +1024,6 @@
           <h4 style="color:var(--accent); margin:6px 0;">Klik untuk Memilih File dari Komputer Anda</h4>
           <p style="font-size:12px; color:#94a3b8;">Mendukung file .json bank soal atau file teks .txt berisi daftar soal</p>
           <input type="file" id="fileUploadInput" accept=".json,.txt" style="display:none;" onchange="handleFileUpload(event)">
-        </div>
-      </div>
-
-      <!-- TAB 3: EDITOR JSON MANUAL -->
-      <div class="admin-tab-content" id="tabJson">
-        <textarea class="json-editor" id="adminJsonEditor"></textarea>
-        <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
-          <div style="display:flex; gap:8px;">
-            <button class="pill-btn" style="background:var(--primary); color:#000; font-weight:bold;" onclick="saveCustomQuestions()">💾 Terapkan Soal Baru</button>
-            <button class="pill-btn" onclick="resetDefaultQuestions()">🔄 Reset Soal SAS Asli</button>
-          </div>
-          <button class="pill-btn" onclick="downloadQuestionsJSON()">📥 Export File JSON</button>
         </div>
       </div>
     </div>
@@ -1318,8 +1357,42 @@
           osc.start(now);
           osc.stop(now + 0.45);
         });
+      },
+
+      countdownBeep(freq = 440, isStart = false) {
+        if (this.isMuted) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = isStart ? 'sawtooth' : 'triangle';
+        osc.frequency.setValueAtTime(freq, now);
+        if (isStart) {
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.5, now + 0.35);
+        }
+        gain.gain.setValueAtTime(0.35, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + (isStart ? 0.6 : 0.28));
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start(now);
+        osc.stop(now + (isStart ? 0.6 : 0.3));
       }
     };
+
+    function speakCountdown(word) {
+      if ('speechSynthesis' in window && !Sound.isMuted) {
+        try {
+          window.speechSynthesis.cancel();
+          const utter = new SpeechSynthesisUtterance(word);
+          utter.lang = 'id-ID';
+          utter.rate = 1.05;
+          utter.pitch = 1.15;
+          window.speechSynthesis.speak(utter);
+        } catch (e) {
+          console.warn("Speech synthesis error:", e);
+        }
+      }
+    }
 
     function toggleAudio() {
       Sound.isMuted = !Sound.isMuted;
@@ -1434,30 +1507,30 @@
       }
     };
 
-    function setTrackTheme(themeKey) {
+    function setTrackTheme(themeKey, btnEl) {
       playerConfig.trackTheme = themeKey;
-      document.querySelectorAll('#customizerScreen .option-pills .pill-btn').forEach(b => {
-        if (b.getAttribute('onclick')?.includes(themeKey)) b.classList.add('active');
-      });
+      document.querySelectorAll('#groupTrackTheme .pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
     }
 
-    function setCarModel(model) {
+    function setCarModel(model, btnEl) {
       playerConfig.carModel = model;
-      document.querySelectorAll('.option-pills .pill-btn').forEach(b => {
-        if (b.innerText.toLowerCase().includes(model.split('_')[0])) b.classList.add('active');
-      });
+      document.querySelectorAll('#groupCarModel .pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
       updateAvatarPreview();
     }
 
-    function setHeadwear(hw) {
+    function setHeadwear(hw, btnEl) {
       playerConfig.headwear = hw;
+      document.querySelectorAll('#groupHeadwear .pill-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
       updateAvatarPreview();
     }
 
-    function setKartColor(color) {
+    function setKartColor(color, swatchEl) {
       playerConfig.kartColor = color;
-      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-      event.target.classList.add('active');
+      document.querySelectorAll('#groupKartColor .swatch').forEach(s => s.classList.remove('active'));
+      if (swatchEl) swatchEl.classList.add('active');
       updateAvatarPreview();
     }
 
@@ -1804,10 +1877,12 @@
       ctx.restore();
     }
 
+    let isCountdownActive = false;
+    let mascotAnimId = null;
+    let flagWaveTime = 0;
+
     function startAdventure() {
       Sound.init();
-      Sound.startEngineSound();
-      Sound.startRacingMusic();
 
       document.getElementById('customizerScreen').style.display = 'none';
       document.getElementById('gameHUD').style.display = 'flex';
@@ -1817,6 +1892,308 @@
       initPeers();
       initWorldCanvas();
       drawVerifiedQRCode();
+
+      // Launch Mascot Guide with START Flag & 3-2-1 Countdown
+      launchStartCountdown();
+    }
+
+    function launchStartCountdown() {
+      isCountdownActive = true;
+      playerCar.speed = 0;
+      
+      const overlay = document.getElementById('startCountdownOverlay');
+      overlay.style.display = 'flex';
+      overlay.style.opacity = '1';
+      
+      const numText = document.getElementById('countdownNumberText');
+      const subText = document.getElementById('countdownSubText');
+      const lightR = document.getElementById('lightRed');
+      const lightY = document.getElementById('lightYellow');
+      const lightG = document.getElementById('lightGreen');
+
+      lightR.style.background = '#331111'; lightR.style.boxShadow = 'none';
+      lightY.style.background = '#332900'; lightY.style.boxShadow = 'none';
+      lightG.style.background = '#052e16'; lightG.style.boxShadow = 'none';
+      
+      numText.innerText = "BERSIAP!";
+      numText.style.color = "#ffd600";
+      subText.innerText = "Pemandu Balap MTsN 6 Malang mengibarkan bendera start!";
+
+      startMascotAnimation();
+
+      // Hitungan 3 (Merah)
+      setTimeout(() => {
+        lightR.style.background = '#ff1744';
+        lightR.style.boxShadow = '0 0 32px #ff1744';
+        numText.innerText = "3";
+        numText.style.color = "#ff1744";
+        subText.innerText = "Injak pedal gas... bersiap melaju!";
+        Sound.countdownBeep(440, false);
+        speakCountdown("Tiga");
+      }, 700);
+
+      // Hitungan 2 (Kuning)
+      setTimeout(() => {
+        lightY.style.background = '#ffd600';
+        lightY.style.boxShadow = '0 0 32px #ffd600';
+        numText.innerText = "2";
+        numText.style.color = "#ffd600";
+        subText.innerText = "Fokus ke depan arah sirkuit!";
+        Sound.countdownBeep(554, false);
+        speakCountdown("Dua");
+      }, 1700);
+
+      // Hitungan 1 (Cyan)
+      setTimeout(() => {
+        lightR.style.background = '#ff1744';
+        lightY.style.background = '#ffd600';
+        numText.innerText = "1";
+        numText.style.color = "#00e5ff";
+        subText.innerText = "Kopling siap... satu detik lagi!";
+        Sound.countdownBeep(659, false);
+        speakCountdown("Satu");
+      }, 2700);
+
+      // MULAI! (Hijau)
+      setTimeout(() => {
+        lightG.style.background = '#00e676';
+        lightG.style.boxShadow = '0 0 45px #00e676';
+        numText.innerText = "🚀 MULAI! GASPOL! 🏁";
+        numText.style.color = "#00e676";
+        subText.innerText = "KIBARKAN BENDERA! BALAPAN RESMI DIMULAI!";
+        Sound.countdownBeep(880, true);
+        Sound.nitro();
+        speakCountdown("Mulai!");
+        
+        isCountdownActive = false;
+        Sound.startEngineSound();
+        Sound.startRacingMusic();
+        playerCar.speed = 9; // dorongan awal
+      }, 3700);
+
+      // Fade out overlay
+      setTimeout(() => {
+        overlay.style.transition = 'opacity 0.5s ease-out';
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          overlay.style.transition = '';
+          stopMascotAnimation();
+        }, 500);
+      }, 4800);
+    }
+
+    function startMascotAnimation() {
+      flagWaveTime = 0;
+      function animate() {
+        flagWaveTime += 0.08;
+        drawMascotFrame(flagWaveTime);
+        mascotAnimId = requestAnimationFrame(animate);
+      }
+      mascotAnimId = requestAnimationFrame(animate);
+    }
+
+    function stopMascotAnimation() {
+      if (mascotAnimId) {
+        cancelAnimationFrame(mascotAnimId);
+        mascotAnimId = null;
+      }
+    }
+
+    function drawMascotFrame(t) {
+      const c = document.getElementById('mascotStartCanvas');
+      if (!c) return;
+      const ctx = c.getContext('2d');
+      ctx.clearRect(0, 0, c.width, c.height);
+
+      const cx = 110;
+      const cy = 160;
+
+      // Shadow di lantai
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.beginPath();
+      ctx.ellipse(cx, cy + 85, 45, 12, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Baju Balap Jumpsuit
+      ctx.fillStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.roundRect(cx - 28, cy - 20, 56, 75, 12);
+      ctx.fill();
+
+      // Garis Balap Hijau MTs
+      ctx.fillStyle = '#00e676';
+      ctx.fillRect(cx - 24, cy - 10, 8, 60);
+      ctx.fillRect(cx + 16, cy - 10, 8, 60);
+
+      // Sabuk Emas dan Kepala Sabuk Catur
+      ctx.fillStyle = '#ffd600';
+      ctx.fillRect(cx - 28, cy + 25, 56, 8);
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(cx - 8, cy + 23, 16, 12);
+      ctx.fillStyle = '#000000';
+      ctx.fillRect(cx - 4, cy + 27, 8, 4);
+
+      // Sepatu Balap
+      ctx.fillStyle = '#ff1744';
+      ctx.beginPath();
+      ctx.roundRect(cx - 26, cy + 60, 20, 16, 6);
+      ctx.roundRect(cx + 6, cy + 60, 20, 16, 6);
+      ctx.fill();
+
+      // Wajah Karakter Kartun Lucu
+      ctx.fillStyle = '#fed7aa';
+      ctx.beginPath();
+      ctx.arc(cx, cy - 50, 32, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Pipi Merona Ceria
+      ctx.fillStyle = 'rgba(244, 63, 94, 0.45)';
+      ctx.beginPath();
+      ctx.arc(cx - 18, cy - 42, 6, 0, Math.PI * 2);
+      ctx.arc(cx + 18, cy - 42, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Mata Kartun Pixar Besar Berbinar
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.ellipse(cx - 12, cy - 55, 9, 12, 0, 0, Math.PI * 2);
+      ctx.ellipse(cx + 12, cy - 55, 9, 12, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#334155';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Iris Biru Terang
+      ctx.fillStyle = '#0284c7';
+      ctx.beginPath();
+      ctx.arc(cx - 10, cy - 54, 6, 0, Math.PI * 2);
+      ctx.arc(cx + 14, cy - 54, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Pupil Hitam
+      ctx.fillStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.arc(cx - 10, cy - 54, 3.5, 0, Math.PI * 2);
+      ctx.arc(cx + 14, cy - 54, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Kilau Cahaya Mata
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(cx - 12, cy - 57, 2, 0, Math.PI * 2);
+      ctx.arc(cx + 12, cy - 57, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Senyum Semangat Lebar
+      ctx.fillStyle = '#991b1b';
+      ctx.beginPath();
+      ctx.arc(cx, cy - 38, 10, 0, Math.PI);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(cx - 6, cy - 38, 12, 3);
+
+      // Peci Hitam MTsN 6 dengan List Emas
+      ctx.fillStyle = '#070b14';
+      ctx.beginPath();
+      ctx.roundRect(cx - 30, cy - 84, 60, 24, [8, 8, 2, 2]);
+      ctx.fill();
+      ctx.fillStyle = '#ffd600';
+      ctx.fillRect(cx - 30, cy - 70, 60, 3);
+      ctx.fillStyle = '#00e676';
+      ctx.font = 'bold 8px Segoe UI';
+      ctx.textAlign = 'center';
+      ctx.fillText("MTsN 6", cx, cy - 74);
+
+      // Lengan Kiri (Acungan Jempol Semangat 👍)
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.moveTo(cx - 24, cy - 5);
+      ctx.lineTo(cx - 48, cy + 5);
+      ctx.stroke();
+      ctx.fillStyle = '#fed7aa';
+      ctx.beginPath();
+      ctx.arc(cx - 50, cy + 5, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Lengan Kanan Memegang Tiang Bendera
+      ctx.lineWidth = 10;
+      ctx.strokeStyle = '#0f172a';
+      ctx.beginPath();
+      ctx.moveTo(cx + 24, cy - 5);
+      ctx.lineTo(cx + 42, cy - 35);
+      ctx.stroke();
+
+      ctx.fillStyle = '#fed7aa';
+      ctx.beginPath();
+      ctx.arc(cx + 44, cy - 36, 8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Tiang Bendera Logam Emas
+      ctx.lineWidth = 5;
+      ctx.strokeStyle = '#ffd600';
+      ctx.beginPath();
+      ctx.moveTo(cx + 38, cy + 20);
+      ctx.lineTo(cx + 52, cy - 130);
+      ctx.stroke();
+      ctx.fillStyle = '#ffd700';
+      ctx.beginPath();
+      ctx.arc(cx + 52, cy - 130, 6, 0, Math.PI * 2);
+      ctx.fill();
+
+      // BENDERA CATUR BERKIBAR BERTULISKAN "START"
+      const poleTopX = cx + 51;
+      const poleTopY = cy - 124;
+      const flagW = 105;
+      const flagH = 68;
+
+      ctx.save();
+      ctx.translate(poleTopX, poleTopY);
+
+      const w1 = Math.sin(t * 4) * 8;
+      const w2 = Math.cos(t * 4) * 8;
+
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(flagW * 0.4, w1, flagW * 0.7, -w2, flagW, w1);
+      ctx.lineTo(flagW, flagH + w1);
+      ctx.bezierCurveTo(flagW * 0.7, flagH - w2, flagW * 0.4, flagH + w1, 0, flagH);
+      ctx.closePath();
+      ctx.fill();
+      ctx.clip();
+
+      const rows = 4;
+      const cols = 6;
+      const cw = flagW / cols;
+      const ch = flagH / rows;
+      for (let r = 0; r < rows; r++) {
+        for (let c_idx = 0; c_idx < cols; c_idx++) {
+          if ((r + c_idx) % 2 === 0) {
+            ctx.fillStyle = '#111827';
+            ctx.fillRect(c_idx * cw, r * ch, cw, ch);
+          }
+        }
+      }
+
+      // Badge Kuning Bertuliskan "START"
+      ctx.fillStyle = '#ffd600';
+      ctx.strokeStyle = '#000000';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.roundRect(14, 16 + (w1 * 0.5), 76, 36, 8);
+      ctx.fill();
+      ctx.stroke();
+
+      // Teks BENDERA "START"
+      ctx.fillStyle = '#000000';
+      ctx.font = '900 16px "Segoe UI", Arial Black, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText("START", 52, 34 + (w1 * 0.5));
+
+      ctx.restore();
     }
 
     function toggleViewMode() {
@@ -1857,6 +2234,10 @@
     }
 
     function updatePhysics() {
+      if (isCountdownActive) {
+        playerCar.speed = 0;
+        return;
+      }
       if (playerCar.isSpinning) {
         playerCar.angle += 0.24;
         playerCar.speed *= 0.94;
@@ -1917,17 +2298,57 @@
       document.getElementById('modalTopic').innerText = box.soal.topik.toUpperCase();
       document.getElementById('modalQuestionText').innerText = box.soal.soal;
 
-      document.getElementById('optTextA').innerText = box.soal.opsi.A;
-      document.getElementById('optTextB').innerText = box.soal.opsi.B;
-      document.getElementById('optTextC').innerText = box.soal.opsi.C;
-      document.getElementById('optTextD').innerText = box.soal.opsi.D;
+      const qType = box.soal.tipe || 'PG';
+      const typeBadge = document.getElementById('modalTypeBadge');
+      
+      const gridPG = document.getElementById('modalOptionsGrid');
+      const boxShort = document.getElementById('modalShortAnswerContainer');
+      const boxEssay = document.getElementById('modalEssayContainer');
 
-      document.querySelectorAll('.q-btn').forEach(b => {
-        b.classList.remove('correct', 'wrong');
-        b.disabled = false;
-      });
+      if (qType === 'ISIAN') {
+        typeBadge.innerText = 'ISIAN SINGKAT';
+        typeBadge.style.color = '#ffd600';
+        typeBadge.style.borderColor = '#ffd600';
+        gridPG.style.display = 'none';
+        boxEssay.style.display = 'none';
+        boxShort.style.display = 'flex';
+        
+        const input = document.getElementById('inputShortAnswer');
+        input.value = '';
+        input.disabled = false;
+        setTimeout(() => input.focus(), 150);
+      } else if (qType === 'URAIAN') {
+        typeBadge.innerText = 'URAIAN PANJANG';
+        typeBadge.style.color = '#00e5ff';
+        typeBadge.style.borderColor = '#00e5ff';
+        gridPG.style.display = 'none';
+        boxShort.style.display = 'none';
+        boxEssay.style.display = 'flex';
+
+        const area = document.getElementById('inputEssayAnswer');
+        area.value = '';
+        area.disabled = false;
+        setTimeout(() => area.focus(), 150);
+      } else {
+        typeBadge.innerText = 'PILIHAN GANDA';
+        typeBadge.style.color = '#00e676';
+        typeBadge.style.borderColor = '#00e676';
+        boxShort.style.display = 'none';
+        boxEssay.style.display = 'none';
+        gridPG.style.display = 'grid';
+
+        document.getElementById('optTextA').innerText = box.soal.opsi ? box.soal.opsi.A : '-';
+        document.getElementById('optTextB').innerText = box.soal.opsi ? box.soal.opsi.B : '-';
+        document.getElementById('optTextC').innerText = box.soal.opsi ? box.soal.opsi.C : '-';
+        document.getElementById('optTextD').innerText = box.soal.opsi ? box.soal.opsi.D : '-';
+
+        document.querySelectorAll('.q-btn').forEach(b => {
+          b.classList.remove('correct', 'wrong');
+          b.disabled = false;
+        });
+      }
+
       document.getElementById('modalFeedback').style.display = 'none';
-
       document.getElementById('questionModal').style.display = 'flex';
       playerCar.speed = 0;
     }
@@ -1937,6 +2358,7 @@
 
       const soal = currentBox.soal;
       const isCorrect = (chosenKey === soal.kunci);
+      const points = 100 / activeQuestions.length;
 
       document.querySelectorAll('.q-btn').forEach(btn => {
         btn.disabled = true;
@@ -1950,8 +2372,9 @@
       if (isCorrect) {
         Sound.playCorrectSound(); // Suara Melodi Juara
         feedback.className = 'q-feedback correct';
-        feedback.innerHTML = `<strong>⚡ JAWABAN BENAR! (+2.5 POIN & SUPER NITRO!)</strong><br>${soal.pembahasan}`;
-        playerCar.score += 2.5;
+        feedback.innerHTML = `<strong>⚡ JAWABAN BENAR! (+${points.toFixed(1)} POIN & SUPER NITRO!)</strong><br>${soal.pembahasan}`;
+        playerCar.score += points;
+        playerCar.score = Math.min(100, Math.round(playerCar.score * 10) / 10);
         playerCar.isBoosting = true;
         playerCar.speed = playerCar.boostSpeed;
         triggerEventBanner(`⚡ ${playerConfig.name} menjawab Benar Kotak #${currentBox.id}! NITRO AKTIF!`);
@@ -1975,6 +2398,92 @@
           showFinalPodium();
         }
       }, 3000);
+    }
+
+    function submitShortAnswer() {
+      if (!currentBox) return;
+      const inputEl = document.getElementById('inputShortAnswer');
+      const userAns = inputEl.value.trim().toLowerCase();
+      if (!userAns) {
+        alert("Ketikkan kata/istilah jawabanmu terlebih dahulu!");
+        return;
+      }
+      const soal = currentBox.soal;
+      const key = (soal.kunci || '').toLowerCase();
+      const points = 100 / activeQuestions.length;
+
+      const isCorrect = (userAns === key) || key.includes(userAns) || userAns.includes(key);
+
+      const feedback = document.getElementById('modalFeedback');
+      feedback.style.display = 'block';
+      inputEl.disabled = true;
+
+      if (isCorrect) {
+        Sound.playCorrectSound();
+        feedback.className = 'q-feedback correct';
+        feedback.innerHTML = `<strong>⚡ JAWABAN TEPAT! (+${points.toFixed(1)} POIN & NITRO AKTIF!)</strong><br>Jawaban: <b>${soal.kunci}</b>.<br>${soal.pembahasan}`;
+        playerCar.score += points;
+        playerCar.score = Math.min(100, Math.round(playerCar.score * 10) / 10);
+        playerCar.isBoosting = true;
+        playerCar.speed = playerCar.boostSpeed;
+        triggerEventBanner(`⚡ ${playerConfig.name} menjawab Tepat: "${soal.kunci}"!`);
+      } else {
+        Sound.playWrongSound();
+        feedback.className = 'q-feedback wrong';
+        feedback.innerHTML = `<strong>🍌 KURANG TEPAT! (TERPELESET!)</strong><br>Kunci yang Benar: <b>${soal.kunci}</b>.<br>${soal.pembahasan}`;
+        playerCar.isSpinning = true;
+        playerCar.spinTimer = 80;
+        triggerEventBanner(`🍌 ${playerConfig.name} kurang tepat di Kotak #${currentBox.id}!`);
+      }
+
+      currentBox.collected = true;
+      playerCar.answeredCount++;
+      updateLeaderboard();
+
+      setTimeout(() => {
+        document.getElementById('questionModal').style.display = 'none';
+        playerCar.isBoosting = false;
+        if (playerCar.answeredCount >= activeQuestions.length) {
+          showFinalPodium();
+        }
+      }, 3200);
+    }
+
+    function submitEssayAnswer() {
+      if (!currentBox) return;
+      const areaEl = document.getElementById('inputEssayAnswer');
+      const userAns = areaEl.value.trim();
+      if (userAns.length < 5) {
+        alert("Tuliskan analisis penjelasan jawabanmu terlebih dahulu!");
+        return;
+      }
+      const soal = currentBox.soal;
+      const points = 100 / activeQuestions.length;
+
+      const feedback = document.getElementById('modalFeedback');
+      feedback.style.display = 'block';
+      areaEl.disabled = true;
+
+      Sound.playCorrectSound();
+      feedback.className = 'q-feedback correct';
+      feedback.innerHTML = `<strong>📝 ANALISIS URAIAN DITERIMA! (+${points.toFixed(1)} POIN & NITRO!)</strong><br><b>Pedoman Model Jawaban Syar'i:</b><br>${soal.pembahasan}`;
+      playerCar.score += points;
+      playerCar.score = Math.min(100, Math.round(playerCar.score * 10) / 10);
+      playerCar.isBoosting = true;
+      playerCar.speed = playerCar.boostSpeed;
+      triggerEventBanner(`📝 ${playerConfig.name} menyelesaikan analisis Uraian Kotak #${currentBox.id}!`);
+
+      currentBox.collected = true;
+      playerCar.answeredCount++;
+      updateLeaderboard();
+
+      setTimeout(() => {
+        document.getElementById('questionModal').style.display = 'none';
+        playerCar.isBoosting = false;
+        if (playerCar.answeredCount >= activeQuestions.length) {
+          showFinalPodium();
+        }
+      }, 3800);
     }
 
     function triggerEventBanner(msg) {
@@ -2249,7 +2758,6 @@
        PANEL GURU: TAB ADMIN, FILE UPLOAD & AI GENERATOR
        ========================================================= */
     function openAdminModal() {
-      document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
       document.getElementById('adminModal').style.display = 'flex';
     }
     function closeAdminModal() {
@@ -2289,6 +2797,7 @@
                 if (currentQ) newQuestions.push(currentQ);
                 currentQ = {
                   id: newQuestions.length + 1,
+                  tipe: "PG",
                   topik: "Materi Fikih",
                   soal: line.replace(/^\d+[\.\)]\s*/, ''),
                   opsi: { A: "", B: "", C: "", D: "" },
@@ -2305,7 +2814,6 @@
           }
 
           localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
-          document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
           generateQuestionBoxes();
           alert(`✅ Sukses memuat ${activeQuestions.length} butir soal dari file: ${file.name}`);
           closeAdminModal();
@@ -2316,75 +2824,113 @@
       reader.readAsText(file);
     }
 
-    // FITUR KECANGGIHAN AI GENERATOR SOAL OTOMATIS
+    // FITUR KECANGGIHAN AI GENERATOR SOAL KREATIF DENGAN DESKRIPSI GURU
     function generateQuestionsWithAI() {
       const grade = document.getElementById('aiGradeSelect').value;
-      const topic = document.getElementById('aiTopicInput').value.trim() || 'Fikih';
-      const count = parseInt(document.getElementById('aiCountSelect').value, 10);
+      const qType = document.getElementById('aiQuestionTypeSelect').value;
+      const count = parseInt(document.getElementById('aiCountInput').value, 10) || 40;
+      const customPrompt = document.getElementById('aiCustomPrompt').value.trim();
       const loading = document.getElementById('aiLoadingStatus');
 
       loading.style.display = 'block';
 
-      // Simulasi Pemrosesan AI Cerdas dalam 1 detik
       setTimeout(() => {
         loading.style.display = 'none';
 
-        const aiGenerated = [];
-        const templateTopics = {
-          VII: ["Thaharah & Najis", "Salat Fardhu", "Salat Berjamaah", "Dzikir & Doa"],
-          VIII: ["Sujud Sahwi & Syukur", "Zakat Mal & Fitrah", "Puasa Fardhu & Sunnah", "Iktikaf"],
-          IX: ["Qurban & Aqiqah", "Penyembelihan Hewan", "Jual Beli & Muamalah", "Riba & Hutang Piutang"]
+        const gradeSyllabus = {
+          VII: [
+            { topic: "Thaharah (Najis)", kw: "Mukhaffafah", case: "Najis kencing bayi laki-laki berumur 8 bulan yang hanya minum ASI" },
+            { topic: "Thaharah (Air Mutlak)", kw: "Suci Menyucikan", case: "Menggunakan air sumur atau air sungai yang masih jernih dan belum berubah sifat" },
+            { topic: "Thaharah (Tayamum)", kw: "Tayamum", case: "Ketiadaan air bersih setelah mencari atau kondisi sakit yang dilarang terkena air" },
+            { topic: "Salat Fardhu (Rukun)", kw: "Al-Fatihah", case: "Membaca surah wajib pada setiap rakaat salat fardhu tanpa terlewat" },
+            { topic: "Salat Fardhu (Sunnah Ab'adh)", kw: "Sunnah Ab'adh", case: "Tertinggal tasyahud awal sehingga dianjurkan sujud sahwi sebelum salam" },
+            { topic: "Salat Berjamaah", kw: "27 Derajat", case: "Keutamaan berlipat ganda salat berjamaah dibanding salat sendirian" },
+            { topic: "Salat Berjamaah (Masbuq)", kw: "Masbuq", case: "Makmum yang datang terlambat saat imam sudah melakukan rukun" },
+            { topic: "Dzikir & Doa", kw: "Istighfar", case: "Bacaan permohonan ampun yang dianjurkan segera setelah salam salat fardhu" },
+            { topic: "Iktikaf", kw: "Masjid", case: "Berdiam diri dengan niat beribadah mendekatkan diri kepada Allah SWT" }
+          ],
+          VIII: [
+            { topic: "Sujud Sahwi", kw: "Sujud Sahwi", case: "Ragu-ragu jumlah bilangan rakaat salat atau lupa sunnah ab'adh" },
+            { topic: "Sujud Syukur", kw: "Sujud Syukur", case: "Mendapat kabar gembira kelulusan atau terhindar dari bahaya kecelakaan" },
+            { topic: "Puasa Fardhu", kw: "Niat di Malam Hari", case: "Syarat sah puasa Ramadan yang wajib dilakukan sebelum terbit fajar" },
+            { topic: "Puasa Sunnah", kw: "Puasa Arafah", case: "Puasa tanggal 9 Dzulhijjah yang menghapus dosa setahun lalu dan setahun mendatang" },
+            { topic: "Zakat Fitrah", kw: "2.5 Kilogram", case: "Kewajiban beras/makanan pokok yang dikeluarkan sebelum salat Idul Fitri" },
+            { topic: "Zakat Mal", kw: "Nishab", case: "Batas minimal kepemilikan harta yang wajib dikeluarkan zakatnya sebesar 2.5%" },
+            { topic: "Mustahiq Zakat", kw: "8 Golongan", case: "Kelompok penerima zakat yang disebutkan dalam QS. At-Taubah ayat 60" },
+            { topic: "Haji & Umrah", kw: "Ihram dari Miqat", case: "Memulai niat ibadah haji dari batas tempat yang telah ditentukan syariat" }
+          ],
+          IX: [
+            { topic: "Penyembelihan", kw: "Saluran Nafas dan Makanan", case: "Memutus hulqum dan mari' menggunakan alat yang tajam bukan tulang/kuku" },
+            { topic: "Qurban", kw: "Hari Tasyrik", case: "Penyembelihan hewan ternak pada tanggal 10, 11, 12, dan 13 Dzulhijjah" },
+            { topic: "Aqiqah", kw: "Dua Ekor Kambing", case: "Ketentuan jumlah sembelihan hewan aqiqah untuk kelahiran anak laki-laki" },
+            { topic: "Jual Beli (Khiyar)", kw: "Khiyar Majelis", case: "Hak memilih meneruskan atau membatalkan akad selama masih berada di tempat transaksi" },
+            { topic: "Riba", kw: "Riba Fadhl", case: "Tukar-menukar barang ribawi sejenis dengan takaran atau timbangan yang berbeda" },
+            { topic: "Pinjam Meminjam", kw: "'Ariyah", case: "Meminjamkan barang yang halal dimanfaatkan dan wajib dikembalikan utuh" },
+            { topic: "Hutang Piutang", kw: "Qardh", case: "Membantu memberi pinjaman uang tanpa meminta tambahan bunga atau riba" },
+            { topic: "Pengurusan Jenazah", kw: "Fardhu Kifayah", case: "Kewajiban kolektif memandikan, mengafani, menyalatkan, dan memakamkan jenazah" }
+          ]
         };
-        const currentGradeTopics = templateTopics[grade] || templateTopics.VII;
+
+        const syllabus = gradeSyllabus[grade] || gradeSyllabus.VII;
+        const aiGenerated = [];
+        const promptNote = customPrompt ? `[Fokus Deskripsi Guru: "${customPrompt}"] ` : `[Studi Kasus Fikih MTsN 6 Malang] `;
 
         for (let i = 1; i <= count; i++) {
-          const subtopic = currentGradeTopics[(i - 1) % currentGradeTopics.length];
-          aiGenerated.push({
-            id: i,
-            topik: `${topic} - Kelas ${grade} (${subtopic})`,
-            soal: `[Studi Kasus HOTS #${i}] Saat berada di madrasah, sekelompok siswa menghadapi persoalan fikih praktis tentang ${subtopic.toLowerCase()}. Berdasarkan kaidah fikih mazhab Syafi'i, bagaimanakah solusi hukum yang paling tepat dan sah?`,
-            opsi: {
-              A: `Melakukan pensucian dan tata cara sesuai rukun syariat secara tertib dan mutlak sah.`,
-              B: `Mengabaikan ketentuan rukun karena dalam kondisi darurat tanpa uzur.`,
-              C: `Mengganti salat dengan amalan lain yang tidak memiliki dasar dalil.`,
-              D: `Membatalkan seluruh ibadah tanpa berusaha mencari solusi syar'i.`
-            },
-            kunci: "A",
-            pembahasan: `Berdasarkan dalil Al-Qur'an dan hadis Nabi SAW, hukum mengenai ${subtopic.toLowerCase()} wajib dipenuhi sesuai rukun dan syarat sahnya agar ibadah diterima.`
-          });
+          const item = syllabus[(i - 1) % syllabus.length];
+          const questionId = i;
+
+          if (qType === "ISIAN") {
+            aiGenerated.push({
+              id: questionId,
+              tipe: "ISIAN",
+              topik: `Fikih Kelas ${grade} - ${item.topic}`,
+              soal: `${promptNote}Pada kegiatan madrasah, siswa mempelajari kasus: "${item.case}". Istilah atau hukum fikih yang tepat untuk menjawab ketentuan tersebut adalah ....`,
+              kunci: item.kw,
+              pembahasan: `Ketentuan syar'i mengenai ${item.case.toLowerCase()} dinamakan atau berhubungan dengan "${item.kw}" sesuai dalil mazhab Syafi'i.`
+            });
+          } else if (qType === "URAIAN") {
+            aiGenerated.push({
+              id: questionId,
+              tipe: "URAIAN",
+              topik: `Fikih Kelas ${grade} - ${item.topic}`,
+              soal: `${promptNote}Analisis Kasus Nyata: Siswa MTsN 6 Malang menjumpai peristiwa: "${item.case}". Bagaimanakah rincian hukum syar'i, syarat sah, serta solusi praktis penyelesaiannya menurut kaidah fikih Islam? Jelaskan secara runtut!`,
+              kunci: item.kw,
+              pembahasan: `Pedoman Jawaban Uraian Syar'i:\n1. Status Hukum: Sah jika rukun dan syarat terpenuhi.\n2. Kaidah Fikih: Mengacu pada materi ${item.topic} (${item.kw}).\n3. Langkah Solusi: Melaksanakan tata cara ibadah secara tertib dan menghindari hal-hal yang membatalkan.`
+            });
+          } else {
+            // PILIHAN GANDA
+            aiGenerated.push({
+              id: questionId,
+              tipe: "PG",
+              topik: `Fikih Kelas ${grade} - ${item.topic}`,
+              soal: `${promptNote}Ketika berada di madrasah, sekelompok siswa berdiskusi mengenai: "${item.case}". Berdasarkan hukum fikih mazhab Syafi'i, tindakan yang paling tepat adalah ....`,
+              opsi: {
+                A: `Melaksanakan ketentuan ibadah sesuai rukun syariat terkait ${item.kw} secara sah dan tertib.`,
+                B: `Mengabaikan ketentuan rukun fikih karena menganggapnya sebagai hal sepele.`,
+                C: `Mengganti tata cara syariat dengan kebiasaan tanpa dasar dalil yang jelas.`,
+                D: `Membatalkan seluruh ibadah tanpa berusaha mencari solusi syar'i yang diperbolehkan.`
+              },
+              kunci: "A",
+              pembahasan: `Berdasarkan ketentuan hukum fikih Islam, kasus "${item.case.toLowerCase()}" diselesaikan dengan mengamalkan "${item.kw}" sesuai rukun dan syarat sah syariat.`
+            });
+          }
         }
 
         activeQuestions = aiGenerated;
         localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
-        document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
         generateQuestionBoxes();
 
-        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir soal HOTS Fikih Kelas ${grade} MTsN 6 Malang! Kotak soal di sirkuit telah diperbarui.`);
+        alert(`✨ SUKSES! AI Canggih berhasil merancang ${count} butir soal ${qType === 'ISIAN' ? 'Isian Singkat' : qType === 'URAIAN' ? 'Uraian Panjang' : 'Pilihan Ganda'} Fikih Kelas ${grade} MTsN 6 Malang sesuai deskripsi Anda! Kotak soal di sirkuit telah siap ditelusuri.`);
         closeAdminModal();
-      }, 900);
-    }
-
-    function saveCustomQuestions() {
-      try {
-        const parsed = JSON.parse(document.getElementById('adminJsonEditor').value);
-        if (!Array.isArray(parsed) || parsed.length === 0) throw new Error("Format harus berupa array soal!");
-        activeQuestions = parsed;
-        localStorage.setItem('CUSTOM_SOAL_FIKIH', JSON.stringify(activeQuestions));
-        alert(`✅ Berhasil menyimpan ${activeQuestions.length} butir soal baru! Kotak soal akan diperbarui.`);
-        generateQuestionBoxes();
-        closeAdminModal();
-      } catch (err) {
-        alert("❌ Format JSON salah! Pastikan format JSON valid:\n" + err.message);
-      }
+      }, 800);
     }
 
     function resetDefaultQuestions() {
       if (confirm("Reset kembali ke 40 Soal SAS Fikih asli MTsN 6 Malang?")) {
         activeQuestions = DEFAULT_SOAL_DATA;
         localStorage.removeItem('CUSTOM_SOAL_FIKIH');
-        document.getElementById('adminJsonEditor').value = JSON.stringify(activeQuestions, null, 2);
         generateQuestionBoxes();
-        alert("✅ Soal berhasil di-reset ke naskah asli!");
+        alert("✅ Soal berhasil di-reset ke naskah asli 40 soal!");
       }
     }
 
